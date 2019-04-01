@@ -1,2 +1,3 @@
-bin
-obj
+# ASP.NET binaries
+bin/
+obj/
