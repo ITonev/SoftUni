@@ -14,12 +14,7 @@ namespace Data_Type_Finder
                 {
                     break;
                 }
-
-                if (true)
-                {
-
-                }
-
+                
                 int isInt;
                 bool isBool;
                 double isDouble;
