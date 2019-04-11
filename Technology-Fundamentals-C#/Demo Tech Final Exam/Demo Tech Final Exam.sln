@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dictionary", "Dictionary\Di
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Deciphering", "Deciphering\Deciphering.csproj", "{142E9E7D-B0F5-493B-88B5-0095A0792E56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concert", "Concert\Concert.csproj", "{1A11CC5B-1D38-432B-A650-1C32595C0009}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concert", "Concert\Concert.csproj", "{1A11CC5B-1D38-432B-A650-1C32595C0009}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Song Encryption", "Song Encryption\Song Encryption.csproj", "{B14CA822-658C-4A8A-891D-7D943E51F138}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1A11CC5B-1D38-432B-A650-1C32595C0009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A11CC5B-1D38-432B-A650-1C32595C0009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A11CC5B-1D38-432B-A650-1C32595C0009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B14CA822-658C-4A8A-891D-7D943E51F138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B14CA822-658C-4A8A-891D-7D943E51F138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B14CA822-658C-4A8A-891D-7D943E51F138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B14CA822-658C-4A8A-891D-7D943E51F138}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
