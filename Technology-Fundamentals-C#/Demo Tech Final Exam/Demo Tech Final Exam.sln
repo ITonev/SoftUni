@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Concert", "Concert\Concert.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Song Encryption", "Song Encryption\Song Encryption.csproj", "{B14CA822-658C-4A8A-891D-7D943E51F138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vapor Winter Sale", "Vapor Winter Sale\Vapor Winter Sale.csproj", "{65D01DF2-83B1-456A-9B5B-7F0ACFC80C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vapor Winter Sale", "Vapor Winter Sale\Vapor Winter Sale.csproj", "{65D01DF2-83B1-456A-9B5B-7F0ACFC80C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Activation Keys", "Activation Keys\Activation Keys.csproj", "{4F6AB2A2-7315-44B9-83EE-61BB267D18E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{65D01DF2-83B1-456A-9B5B-7F0ACFC80C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D01DF2-83B1-456A-9B5B-7F0ACFC80C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D01DF2-83B1-456A-9B5B-7F0ACFC80C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F6AB2A2-7315-44B9-83EE-61BB267D18E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F6AB2A2-7315-44B9-83EE-61BB267D18E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F6AB2A2-7315-44B9-83EE-61BB267D18E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F6AB2A2-7315-44B9-83EE-61BB267D18E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
