@@ -13,13 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fast Food", "Fast Food\Fast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fashion Boutique", "Fashion Boutique\Fashion Boutique.csproj", "{6A552498-D6B1-4841-8574-2D949C6F2DA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto Repair and Service", "Auto Repair and Service\Auto Repair and Service.csproj", "{7386B40C-AD79-4E75-B83A-0BC85946E74C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auto Repair and Service", "Auto Repair and Service\Auto Repair and Service.csproj", "{7386B40C-AD79-4E75-B83A-0BC85946E74C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Truck Tour", "Truck Tour\Truck Tour.csproj", "{0F17F5BD-F749-4E06-B0F1-4E129676C391}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Truck Tour", "Truck Tour\Truck Tour.csproj", "{0F17F5BD-F749-4E06-B0F1-4E129676C391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balanced Parentheses", "Balanced Parentheses\Balanced Parentheses.csproj", "{0FD648EF-9F4E-4F58-9AD5-388478626017}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Balanced Parentheses", "Balanced Parentheses\Balanced Parentheses.csproj", "{0FD648EF-9F4E-4F58-9AD5-388478626017}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple Text Editor", "Simple Text Editor\Simple Text Editor.csproj", "{5826AF61-4858-472F-B027-B50B3628D018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple Text Editor", "Simple Text Editor\Simple Text Editor.csproj", "{5826AF61-4858-472F-B027-B50B3628D018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crossroads", "Crossroads\Crossroads.csproj", "{DECC7C06-3DBE-4FF5-A414-2702576370B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{5826AF61-4858-472F-B027-B50B3628D018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5826AF61-4858-472F-B027-B50B3628D018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5826AF61-4858-472F-B027-B50B3628D018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DECC7C06-3DBE-4FF5-A414-2702576370B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DECC7C06-3DBE-4FF5-A414-2702576370B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DECC7C06-3DBE-4FF5-A414-2702576370B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DECC7C06-3DBE-4FF5-A414-2702576370B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
