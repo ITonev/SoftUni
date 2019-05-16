@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic Stack Operations", "Basic Stack Operations\Basic Stack Operations.csproj", "{9C52D30A-9B2A-4375-9D8F-3B6A245C89F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basic Stack Operations", "Basic Stack Operations\Basic Stack Operations.csproj", "{9C52D30A-9B2A-4375-9D8F-3B6A245C89F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic Queue Operations", "Basic Queue Operations\Basic Queue Operations.csproj", "{3A3F016B-5926-42CC-9A2B-AE7F9624C6F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maximum and Minimum Element", "Maximum and Minimum Element\Maximum and Minimum Element.csproj", "{97E003A8-9BB0-4542-80E3-5BF65995F7E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fast Food", "Fast Food\Fast Food.csproj", "{EC7820E7-01CF-470D-932F-E98E862A511C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fashion Boutique", "Fashion Boutique\Fashion Boutique.csproj", "{6A552498-D6B1-4841-8574-2D949C6F2DA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{9C52D30A-9B2A-4375-9D8F-3B6A245C89F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C52D30A-9B2A-4375-9D8F-3B6A245C89F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C52D30A-9B2A-4375-9D8F-3B6A245C89F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3F016B-5926-42CC-9A2B-AE7F9624C6F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3F016B-5926-42CC-9A2B-AE7F9624C6F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3F016B-5926-42CC-9A2B-AE7F9624C6F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3F016B-5926-42CC-9A2B-AE7F9624C6F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E003A8-9BB0-4542-80E3-5BF65995F7E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E003A8-9BB0-4542-80E3-5BF65995F7E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E003A8-9BB0-4542-80E3-5BF65995F7E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E003A8-9BB0-4542-80E3-5BF65995F7E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC7820E7-01CF-470D-932F-E98E862A511C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC7820E7-01CF-470D-932F-E98E862A511C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC7820E7-01CF-470D-932F-E98E862A511C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC7820E7-01CF-470D-932F-E98E862A511C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A552498-D6B1-4841-8574-2D949C6F2DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A552498-D6B1-4841-8574-2D949C6F2DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A552498-D6B1-4841-8574-2D949C6F2DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A552498-D6B1-4841-8574-2D949C6F2DA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

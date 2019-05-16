@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Basic_Stack_Operations
+namespace Basic_Queue_Operations
 {
     class Program
     {
@@ -10,17 +10,17 @@ namespace Basic_Stack_Operations
         {
             var command = Console.ReadLine().Split().Select(int.Parse).ToArray();
 
-            var countToPush = command[0];
-            var countsToPop = command[1];
+            var countToEnqueue = command[0];
+            var countsToDequeue = command[1];
             var numberToSearch = command[2];
 
             var input = Console.ReadLine().Split().Select(int.Parse).ToArray();
 
-            Stack<int> numbers = new Stack<int>(input);
+            Queue<int> numbers = new Queue<int>(input);
 
-            for (int i = 0; i < countsToPop; i++)
+            for (int i = 0; i < countsToDequeue; i++)
             {
-                numbers.Pop();
+                numbers.Dequeue();
             }
 
             if (numbers.Contains(numberToSearch))
@@ -28,7 +28,7 @@ namespace Basic_Stack_Operations
                 Console.WriteLine($"true");
             }
 
-            else if (numbers.Count>0)
+            else if (numbers.Count > 0)
             {
                 Console.WriteLine(numbers.Min());
             }
