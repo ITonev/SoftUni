@@ -5,13 +5,19 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diagonal Difference", "Diagonal Difference\Diagonal Difference.csproj", "{7E0EDF7D-D874-4BC8-830B-CB680CEC1AC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Squares in Matrix", "Squares in Matrix\Squares in Matrix.csproj", "{FE57C7FB-9C88-453F-82F0-77AF8EE94A18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Squares in Matrix", "Squares in Matrix\Squares in Matrix.csproj", "{FE57C7FB-9C88-453F-82F0-77AF8EE94A18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maximal Sum", "Maximal Sum\Maximal Sum.csproj", "{9DEBF493-B52C-4566-8EF5-A810F344E11E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maximal Sum", "Maximal Sum\Maximal Sum.csproj", "{9DEBF493-B52C-4566-8EF5-A810F344E11E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix shuffling", "Matrix shuffling\Matrix shuffling.csproj", "{CBC2A45B-91CF-40E4-BE7D-4BDF1A32976D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matrix shuffling", "Matrix shuffling\Matrix shuffling.csproj", "{CBC2A45B-91CF-40E4-BE7D-4BDF1A32976D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake Moves", "Snake Moves\Snake Moves.csproj", "{0E19FE7C-565D-4A3B-9A33-CDE4371D37FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snake Moves", "Snake Moves\Snake Moves.csproj", "{0E19FE7C-565D-4A3B-9A33-CDE4371D37FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bomb the Basement", "Bomb the Basement\Bomb the Basement.csproj", "{FC75427D-5915-4310-9C0B-B4E2EE2349D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knight Game", "Knight Game\Knight Game.csproj", "{7E5B22C1-8AA9-428B-97B5-5DD0662399FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bombs", "Bombs\Bombs.csproj", "{2B7BB0EB-7A82-4B59-83DF-EB5140851E90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{0E19FE7C-565D-4A3B-9A33-CDE4371D37FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E19FE7C-565D-4A3B-9A33-CDE4371D37FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E19FE7C-565D-4A3B-9A33-CDE4371D37FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC75427D-5915-4310-9C0B-B4E2EE2349D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC75427D-5915-4310-9C0B-B4E2EE2349D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC75427D-5915-4310-9C0B-B4E2EE2349D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC75427D-5915-4310-9C0B-B4E2EE2349D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E5B22C1-8AA9-428B-97B5-5DD0662399FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E5B22C1-8AA9-428B-97B5-5DD0662399FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E5B22C1-8AA9-428B-97B5-5DD0662399FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E5B22C1-8AA9-428B-97B5-5DD0662399FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B7BB0EB-7A82-4B59-83DF-EB5140851E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B7BB0EB-7A82-4B59-83DF-EB5140851E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B7BB0EB-7A82-4B59-83DF-EB5140851E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B7BB0EB-7A82-4B59-83DF-EB5140851E90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
