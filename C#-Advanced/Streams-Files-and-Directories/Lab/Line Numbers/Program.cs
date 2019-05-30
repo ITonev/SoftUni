@@ -11,7 +11,7 @@ namespace Line_Numbers
             {
                 var counter = 0;
 
-                using (var writer = new StreamWriter("Resources/02. Line Numbers/Output.txt"))
+                using (var writer = new StreamWriter("Resources/02. Line Numbers/Output.txt", true))
                 {
                     while (true)
                     {
