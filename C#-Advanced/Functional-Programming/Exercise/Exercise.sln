@@ -19,9 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Predicate For Names", "Pred
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Custom Comparator", "Custom Comparator\Custom Comparator.csproj", "{BA5212A9-ECEB-404F-B002-48704F562D55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "List Of Predicates", "List Of Predicates\List Of Predicates.csproj", "{DCD201B5-68D3-4CA9-9CA2-4FB3243E0C30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "List Of Predicates", "List Of Predicates\List Of Predicates.csproj", "{DCD201B5-68D3-4CA9-9CA2-4FB3243E0C30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Predicate Party!", "Predicate Party!\Predicate Party!.csproj", "{8B54BD50-9E08-476F-925C-F9531D3F478F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Predicate Party!", "Predicate Party!\Predicate Party!.csproj", "{8B54BD50-9E08-476F-925C-F9531D3F478F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Party Reservation Filter Module", "Party Reservation Filter Module\Party Reservation Filter Module.csproj", "{628E3DD4-3403-4CB2-AFAE-72EBB16076DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriFunction", "TriFunction\TriFunction.csproj", "{A8190197-194B-4C75-B248-D82DB1AE7955}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{8B54BD50-9E08-476F-925C-F9531D3F478F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B54BD50-9E08-476F-925C-F9531D3F478F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B54BD50-9E08-476F-925C-F9531D3F478F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{628E3DD4-3403-4CB2-AFAE-72EBB16076DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{628E3DD4-3403-4CB2-AFAE-72EBB16076DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{628E3DD4-3403-4CB2-AFAE-72EBB16076DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{628E3DD4-3403-4CB2-AFAE-72EBB16076DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8190197-194B-4C75-B248-D82DB1AE7955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8190197-194B-4C75-B248-D82DB1AE7955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8190197-194B-4C75-B248-D82DB1AE7955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8190197-194B-4C75-B248-D82DB1AE7955}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
