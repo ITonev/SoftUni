@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reverse And Exclude", "Reve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Predicate For Names", "Predicate For Names\Predicate For Names.csproj", "{A98D8939-BF6E-456C-8B9D-56AB0A63FE7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custom Comparator", "Custom Comparator\Custom Comparator.csproj", "{BA5212A9-ECEB-404F-B002-48704F562D55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Custom Comparator", "Custom Comparator\Custom Comparator.csproj", "{BA5212A9-ECEB-404F-B002-48704F562D55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "List Of Predicates", "List Of Predicates\List Of Predicates.csproj", "{DCD201B5-68D3-4CA9-9CA2-4FB3243E0C30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Predicate Party!", "Predicate Party!\Predicate Party!.csproj", "{8B54BD50-9E08-476F-925C-F9531D3F478F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{BA5212A9-ECEB-404F-B002-48704F562D55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA5212A9-ECEB-404F-B002-48704F562D55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA5212A9-ECEB-404F-B002-48704F562D55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD201B5-68D3-4CA9-9CA2-4FB3243E0C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD201B5-68D3-4CA9-9CA2-4FB3243E0C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD201B5-68D3-4CA9-9CA2-4FB3243E0C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD201B5-68D3-4CA9-9CA2-4FB3243E0C30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B54BD50-9E08-476F-925C-F9531D3F478F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B54BD50-9E08-476F-925C-F9531D3F478F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B54BD50-9E08-476F-925C-F9531D3F478F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B54BD50-9E08-476F-925C-F9531D3F478F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
