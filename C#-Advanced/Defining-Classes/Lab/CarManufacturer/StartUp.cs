@@ -16,9 +16,17 @@ namespace CarManufacturer
             Car secondCar = new Car(make, model, year);
             Car thirdCar = new Car(make, model, year, fuelQuantity, fuelConsumption);
 
-            Console.WriteLine(firstCar.WhoAmI());
-            Console.WriteLine(secondCar.WhoAmI());
-            Console.WriteLine(thirdCar.WhoAmI());
+            var tires = new Tire[4]
+            {
+                new Tire(2012, 2.5),
+                new Tire(2015, 2.9),
+                new Tire(2018, 2.2),
+                new Tire(2019, 3.2),
+            };
+
+            var engine = new Engine(201, 2000);
+
+            Car fourthCar = new Car("Honda", "Civic", 2008, 47, 11, engine, tires);
 
         }
     }
