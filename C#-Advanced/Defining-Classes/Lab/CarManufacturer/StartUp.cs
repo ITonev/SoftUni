@@ -11,8 +11,12 @@ namespace CarManufacturer
             car.Make = "VW";
             car.Model = "MK3";
             car.Year = 1992;
+            car.FuelQuantity = 200;
+            car.FuelConsumption = 200;
 
-            Console.WriteLine($"Make: {car.Make}\nModel: {car.Model}\nAge: {car.Year}");
+            car.Drive(2000);
+
+            Console.WriteLine(car.WhoAmI());
 
         }
     }
