@@ -13,6 +13,8 @@ namespace Knights_of_Honor
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .ToList()
                 .ForEach(print);
+
+        
         }
     }
 }
