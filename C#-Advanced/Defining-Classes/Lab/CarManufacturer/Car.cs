@@ -73,27 +73,52 @@ namespace CarManufacturer
             }
         }
 
+        public Car()
+        {
+            this.Make = "VW";
+            this.Model = "Golf";
+            this.Year = 2025;
+            this.FuelQuantity = 200;
+            this.FuelConsumption = 10;
+        }
+
+        public Car(string make, string model, int year)
+            : this()
+        {
+            this.Make = make;
+            this.Model = model;
+            this.Year = year;
+        }
+
+        public Car(string make, string model, int year, double fuelQuantity, double fuelConsumption)
+            : this(make, model, year)
+        {
+            this.FuelConsumption = fuelConsumption;
+            this.FuelQuantity = fuelQuantity;
+        }
 
         public void Drive(double distance)
         {
-            var fuelConsumed = (distance / 100) * this.fuelConsumption;
-            if (fuelConsumed > this.fuelQuantity)
+            var fuelConsumed = (distance / 100) * this.FuelConsumption;
+
+            if (fuelConsumed<=this.FuelQuantity)
             {
-                Console.WriteLine("Not enough fuel to perform this trip!");
+                this.FuelQuantity -= fuelConsumed;
             }
             else
             {
-                this.fuelQuantity -= fuelConsumed;
+                Console.WriteLine("Not enough fuel to perform this trip!");
             }
         }
 
         public string WhoAmI()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Make: {this.make}");
-            sb.AppendLine($"Model: {this.model}");
-            sb.AppendLine($"Year: {this.year}");
-            sb.Append($"Fuel: {this.fuelQuantity}L");
+
+            sb.AppendLine($"Make: {this.Make}");
+            sb.AppendLine($"Model: {this.Model}");
+            sb.AppendLine($"Year: {this.Year}");
+            sb.Append($"Fuel: {this.FuelQuantity:F2}L");
 
             return sb.ToString();
         }
