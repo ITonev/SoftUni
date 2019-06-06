@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefiningClasses", "DefiningClasses\DefiningClasses.csproj", "{66D6B6FB-7BAC-48DA-A6A1-371D747CFF8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opinion", "Opinion Poll\Opinion.csproj", "{BA1666DD-B2DE-42EC-A005-BB668ED0506C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opinion", "Opinion Poll\Opinion.csproj", "{BA1666DD-B2DE-42EC-A005-BB668ED0506C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateModifier", "DateModifier\DateModifier.csproj", "{1FA12097-B963-47DB-B709-3C08F6A254C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyRoster", "CompanyRoster\CompanyRoster.csproj", "{DF8525F4-6ADB-420F-A9B0-C0FA6573DC1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{BA1666DD-B2DE-42EC-A005-BB668ED0506C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA1666DD-B2DE-42EC-A005-BB668ED0506C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA1666DD-B2DE-42EC-A005-BB668ED0506C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FA12097-B963-47DB-B709-3C08F6A254C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FA12097-B963-47DB-B709-3C08F6A254C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FA12097-B963-47DB-B709-3C08F6A254C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FA12097-B963-47DB-B709-3C08F6A254C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8525F4-6ADB-420F-A9B0-C0FA6573DC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8525F4-6ADB-420F-A9B0-C0FA6573DC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8525F4-6ADB-420F-A9B0-C0FA6573DC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8525F4-6ADB-420F-A9B0-C0FA6573DC1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
