@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PokemonTrainer
+namespace SoftUniParking
 {
     public class Program
     {
