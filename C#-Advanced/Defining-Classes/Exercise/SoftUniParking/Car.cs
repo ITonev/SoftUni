@@ -26,12 +26,13 @@ namespace SoftUniParking
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Make: {this.Make}");
-            sb.AppendLine($"Mode: {this.Model}");
-            sb.AppendLine($"HorsePower: {this.HorsePower}");
-            sb.Append($"RegistrationNumber: {this.RegistrationNumber}");
 
-            return sb.ToString();
+            sb.AppendLine($"Make: {this.Make}");
+            sb.AppendLine($"Model: {this.Model}");
+            sb.AppendLine($"HorsePower: {this.HorsePower}");
+            sb.AppendLine($"RegistrationNumber: {this.RegistrationNumber}");
+
+            return sb.ToString().Trim();
         }
 
     }
