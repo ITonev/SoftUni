@@ -62,7 +62,7 @@ namespace SoftUniParking
         {
             foreach (var regNumber in registrationNumbers)
             {
-                this.cars.RemoveAll(x => x.RegistrationNumber == regNumber);
+                this.RemoveCar(regNumber);
             }
         }
     }
