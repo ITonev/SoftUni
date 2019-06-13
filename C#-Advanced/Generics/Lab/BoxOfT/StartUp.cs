@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BoxOfT
 {
@@ -6,7 +7,13 @@ namespace BoxOfT
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var box = new Box<int>();
+            box.Add(2);
+            box.Add(4);
+            box.Add(6);
+            box.Add(8);
+
+            Console.WriteLine(box.Remove());
         }
     }
 }
