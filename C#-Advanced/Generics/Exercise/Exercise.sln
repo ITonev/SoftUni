@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericBox", "GenericBox\GenericBox.csproj", "{4A011A13-FB1A-4C33-BCDA-8D99DC15FCDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericBox", "GenericBox\GenericBox.csproj", "{4A011A13-FB1A-4C33-BCDA-8D99DC15FCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericSwap", "GenericSwap\GenericSwap.csproj", "{44D9007B-EB0D-420B-ABA3-0CDE18B498FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericSwap", "GenericSwap\GenericSwap.csproj", "{44D9007B-EB0D-420B-ABA3-0CDE18B498FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCount", "GenericCount\GenericCount.csproj", "{9AB720F8-554A-4CBF-A0BC-00AA7EA815B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericCount", "GenericCount\GenericCount.csproj", "{9AB720F8-554A-4CBF-A0BC-00AA7EA815B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuple", "Tuple\Tuple.csproj", "{9E412DB8-3C88-47CB-B398-0E1E4ECC3E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{9AB720F8-554A-4CBF-A0BC-00AA7EA815B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AB720F8-554A-4CBF-A0BC-00AA7EA815B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AB720F8-554A-4CBF-A0BC-00AA7EA815B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E412DB8-3C88-47CB-B398-0E1E4ECC3E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E412DB8-3C88-47CB-B398-0E1E4ECC3E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E412DB8-3C88-47CB-B398-0E1E4ECC3E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E412DB8-3C88-47CB-B398-0E1E4ECC3E17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
