@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClubParty", "ClubParty\ClubParty.csproj", "{80B4F8DD-44D0-4C67-BD88-D63E374C29DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TronRacers", "TronRacers\TronRacers.csproj", "{15FCF66C-A1E1-432E-93AD-BB8B20A33052}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Heroes", "Heroes\Heroes.csproj", "{737CE98D-CF30-4E1E-B601-3F172F712CE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80B4F8DD-44D0-4C67-BD88-D63E374C29DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B4F8DD-44D0-4C67-BD88-D63E374C29DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B4F8DD-44D0-4C67-BD88-D63E374C29DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B4F8DD-44D0-4C67-BD88-D63E374C29DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15FCF66C-A1E1-432E-93AD-BB8B20A33052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15FCF66C-A1E1-432E-93AD-BB8B20A33052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15FCF66C-A1E1-432E-93AD-BB8B20A33052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15FCF66C-A1E1-432E-93AD-BB8B20A33052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{737CE98D-CF30-4E1E-B601-3F172F712CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{737CE98D-CF30-4E1E-B601-3F172F712CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{737CE98D-CF30-4E1E-B601-3F172F712CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{737CE98D-CF30-4E1E-B601-3F172F712CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7DFE304-38A6-47DB-8ECE-AB3D9DDDD289}
+	EndGlobalSection
+EndGlobal
