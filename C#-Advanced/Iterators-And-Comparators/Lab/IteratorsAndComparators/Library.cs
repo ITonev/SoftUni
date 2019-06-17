@@ -7,17 +7,20 @@ namespace IteratorsAndComparators
 {
     public class Library : IEnumerable<Book>
     {
-        private List<Book> books;
+        private SortedSet<Book> books;
 
         public Library(params Book[] books)
         {
-            this.books = new List<Book>(books);
+            this.books = new SortedSet<Book>(books, new BookComparator());
         }
 
 
         public IEnumerator<Book> GetEnumerator()
         {
-            return new LibraryIterator(this.books);
+            foreach (var book in this.books)
+            {
+                yield return book;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -26,34 +29,34 @@ namespace IteratorsAndComparators
         }
     }
 
-    public class LibraryIterator : IEnumerator<Book>
-    {
-        private List<Book> books;
+    //public class LibraryIterator : IEnumerator<Book>
+    //{
+    //    private List<Book> books;
 
-        public int CurrentIndex { get; private set; }
+    //    public int CurrentIndex { get; private set; }
 
-        public LibraryIterator(List<Book> books)
-        {
-            this.CurrentIndex = -1;
-            this.books = books;
-        }
+    //    public LibraryIterator(List<Book> books)
+    //    {
+    //        this.CurrentIndex = -1;
+    //        this.books = books;
+    //    }
 
-        public Book Current => this.books[CurrentIndex];
+    //    public Book Current => this.books[CurrentIndex];
 
-        object IEnumerator.Current => this.Current;
+    //    object IEnumerator.Current => this.Current;
 
-        public void Dispose()
-        {
-        }
+    //    public void Dispose()
+    //    {
+    //    }
 
-        public bool MoveNext()
-        {
-            return ++CurrentIndex < this.books.Count;
-        }
+    //    public bool MoveNext()
+    //    {
+    //        return ++CurrentIndex < this.books.Count;
+    //    }
 
-        public void Reset()
-        {
+    //    public void Reset()
+    //    {
 
-        }
-    }
+    //    }
 }
+
