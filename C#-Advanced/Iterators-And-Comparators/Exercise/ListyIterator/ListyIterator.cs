@@ -29,17 +29,13 @@ namespace ListyIterator
 
         public void Print()
         {
-            try
-            {
-                Console.WriteLine($"{this.elements[this.index]}");
 
+            if (this.elements.Count == 0)
+            {
+                throw new InvalidOperationException("Invalid Operation!");
             }
 
-            catch (ArgumentOutOfRangeException)
-            {
-                Console.WriteLine("Invalid Operation!");
-               // throw new ArgumentOutOfRangeException("Invalid Operation!");
-            }
+            Console.WriteLine($"{this.elements[this.index]}");
         }
 
         public bool HasNext()

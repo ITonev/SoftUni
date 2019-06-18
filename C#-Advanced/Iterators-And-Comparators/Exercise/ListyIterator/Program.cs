@@ -11,34 +11,44 @@ namespace ListyIterator
         {
             while (true)
             {
-                var command = Console.ReadLine();
-
-                if (command == "END")
+                try
                 {
-                    break;
+                    var command = Console.ReadLine();
+
+                    if (command == "END")
+                    {
+                        break;
+                    }
+
+                    if (command.StartsWith("Create"))
+                    {
+                        tokens = command.Substring(6).Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
+                        listy = new ListyIterator<string>(tokens);
+                    }
+
+                    switch (command)
+                    {
+                        case "Move":
+                            Console.WriteLine(listy.Move());
+                            break;
+
+                        case "HasNext":
+                            Console.WriteLine(listy.HasNext());
+                            break;
+
+                        case "Print":
+                            listy.Print();
+                            break;
+                    }
                 }
 
-                if (command.StartsWith("Create"))
+                catch (Exception ex)
                 {
-                    tokens = command.Substring(6).Split(" ", StringSplitOptions.RemoveEmptyEntries);
-
-                    listy = new ListyIterator<string>(tokens);
+                    Console.WriteLine(ex.Message);
                 }
 
-                switch (command)
-                {
-                    case "Move":
-                        Console.WriteLine(listy.Move());
-                        break;
-
-                    case "HasNext":
-                        Console.WriteLine(listy.HasNext());
-                        break;
-
-                    case "Print":
-                        listy.Print();
-                        break;
-                }
+                
             }
         }
     }
