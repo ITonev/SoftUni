@@ -40,6 +40,10 @@ namespace ListyIterator
                         case "Print":
                             listy.Print();
                             break;
+
+                        case "PrintAll":
+                            listy.PrintAll();
+                            break;
                     }
                 }
 
