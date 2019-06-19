@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trojan Invasion", "Trojan Invasion\Trojan Invasion.csproj", "{5A3D7E7E-FC00-47D9-BA19-70AB428ABF6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FightingArena", "FightingArena\FightingArena.csproj", "{BBD45B90-98B1-488A-9AF5-0A4964BB92D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A3D7E7E-FC00-47D9-BA19-70AB428ABF6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3D7E7E-FC00-47D9-BA19-70AB428ABF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3D7E7E-FC00-47D9-BA19-70AB428ABF6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3D7E7E-FC00-47D9-BA19-70AB428ABF6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD45B90-98B1-488A-9AF5-0A4964BB92D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD45B90-98B1-488A-9AF5-0A4964BB92D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD45B90-98B1-488A-9AF5-0A4964BB92D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD45B90-98B1-488A-9AF5-0A4964BB92D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C27A1CAD-04C9-4E03-8317-6AA2DABA9AD1}
+	EndGlobalSection
+EndGlobal
