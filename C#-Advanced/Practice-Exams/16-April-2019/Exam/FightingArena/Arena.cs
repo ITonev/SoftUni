@@ -32,17 +32,17 @@ namespace FightingArena
 
         public Gladiator GetGladitorWithHighestStatPower()
         {
-            return this.gladiators.OrderBy(x => x.GetStatPower()).FirstOrDefault();
+            return this.gladiators.OrderByDescending(x => x.GetStatPower()).FirstOrDefault();
         }
 
         public Gladiator GetGladitorWithHighestWeaponPower()
         {
-            return this.gladiators.OrderBy(x => x.GetWeaponPower()).FirstOrDefault();
+            return this.gladiators.OrderByDescending(x => x.GetWeaponPower()).FirstOrDefault();
         }
 
         public Gladiator GetGladitorWithHighestTotalPower()
         {
-            return this.gladiators.OrderBy(x => x.GetTotalPower()).FirstOrDefault();
+            return this.gladiators.OrderByDescending(x => x.GetTotalPower()).FirstOrDefault();
         }
 
         public override string ToString()
