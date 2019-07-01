@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhombus of Stars", "Rhombus of Stars\Rhombus of Stars.csproj", "{032D75F0-0DAB-4B3A-BBF7-E9019806371B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhombus of Stars", "Rhombus of Stars\Rhombus of Stars.csproj", "{032D75F0-0DAB-4B3A-BBF7-E9019806371B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsSystem", "StudentsSystem\StudentsSystem.csproj", "{ABD793A2-B827-444C-9288-7DFE57610090}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{032D75F0-0DAB-4B3A-BBF7-E9019806371B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{032D75F0-0DAB-4B3A-BBF7-E9019806371B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{032D75F0-0DAB-4B3A-BBF7-E9019806371B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABD793A2-B827-444C-9288-7DFE57610090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD793A2-B827-444C-9288-7DFE57610090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD793A2-B827-444C-9288-7DFE57610090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD793A2-B827-444C-9288-7DFE57610090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
