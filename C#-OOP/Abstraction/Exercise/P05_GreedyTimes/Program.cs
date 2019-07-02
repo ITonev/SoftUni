@@ -4,123 +4,141 @@ using System.Linq;
 
 namespace P05_GreedyTimes
 {
-
     public class Potato
     {
         static void Main(string[] args)
         {
-            long vhod = long.Parse(Console.ReadLine());
-            string[] seif = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            long bagCapacity = long.Parse(Console.ReadLine());
 
-            var torba = new Dictionary<string, Dictionary<string, long>>();
-            long zlato = 0;
-            long kamuni = 0;
-            long mangizi = 0;
+            string[] safe = Console.ReadLine()
+                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            for (int i = 0; i < seif.Length; i += 2)
+            var bag = new Dictionary<string, Dictionary<string, long>>();
+
+            long gold = 0;
+            long gems = 0;
+            long currency = 0;
+
+            for (int i = 0; i < safe.Length; i += 2)
             {
-                string name = seif[i];
-                long broika = long.Parse(seif[i + 1]);
+                string currentType = safe[i];
+                long amount = long.Parse(safe[i + 1]);
 
-                string kvoE = string.Empty;
+                string type = string.Empty;
 
-                if (name.Length == 3)
+                if (currentType.Length == 3)
                 {
-                    kvoE = "Cash";
-                }
-                else if (name.ToLower().EndsWith("gem"))
-                {
-                    kvoE = "Gem";
-                }
-                else if (name.ToLower() == "gold")
-                {
-                    kvoE = "Gold";
+                    type = "Cash";
                 }
 
-                if (kvoE == "")
+                else if (currentType.ToLower().EndsWith("gem"))
+                {
+                    type = "Gem";
+                }
+
+                else if (currentType.ToLower() == "gold")
+                {
+                    type = "Gold";
+                }
+
+                if (type == string.Empty)
                 {
                     continue;
                 }
-                else if (vhod < torba.Values.Select(x => x.Values.Sum()).Sum() + broika)
+
+                else if (bagCapacity < bag.Values.Select(x => x.Values.Sum()).Sum() + amount)
                 {
                     continue;
                 }
 
-                switch (kvoE)
+                switch (type)
                 {
                     case "Gem":
-                        if (!torba.ContainsKey(kvoE))
+
+                        if (!bag.ContainsKey(type))
                         {
-                            if (torba.ContainsKey("Gold"))
+                            if (bag.ContainsKey("Gold"))
                             {
-                                if (broika > torba["Gold"].Values.Sum())
+                                if (amount > bag["Gold"].Values.Sum())
                                 {
                                     continue;
                                 }
                             }
+
                             else
                             {
                                 continue;
                             }
                         }
-                        else if (torba[kvoE].Values.Sum() + broika > torba["Gold"].Values.Sum())
+
+                        else if (bag[type].Values.Sum() + amount > bag["Gold"].Values.Sum())
                         {
                             continue;
                         }
+
                         break;
+
                     case "Cash":
-                        if (!torba.ContainsKey(kvoE))
+
+                        if (!bag.ContainsKey(type))
                         {
-                            if (torba.ContainsKey("Gem"))
+                            if (bag.ContainsKey("Gem"))
                             {
-                                if (broika > torba["Gem"].Values.Sum())
+                                if (amount > bag["Gem"].Values.Sum())
                                 {
                                     continue;
                                 }
                             }
+
                             else
                             {
                                 continue;
                             }
                         }
-                        else if (torba[kvoE].Values.Sum() + broika > torba["Gem"].Values.Sum())
+
+                        else if (bag[type].Values.Sum() + amount > bag["Gem"].Values.Sum())
                         {
                             continue;
                         }
+
                         break;
                 }
 
-                if (!torba.ContainsKey(kvoE))
+                if (!bag.ContainsKey(type))
                 {
-                    torba[kvoE] = new Dictionary<string, long>();
+                    bag[type] = new Dictionary<string, long>();
                 }
 
-                if (!torba[kvoE].ContainsKey(name))
+                if (!bag[type].ContainsKey(currentType))
                 {
-                    torba[kvoE][name] = 0;
+                    bag[type][currentType] = 0;
                 }
 
-                torba[kvoE][name] += broika;
-                if (kvoE == "Gold")
+                bag[type][currentType] += amount;
+
+                if (type == "Gold")
                 {
-                    zlato += broika;
+                    gold += amount;
                 }
-                else if (kvoE == "Gem")
+
+                else if (type == "Gem")
                 {
-                    kamuni += broika;
+                    gems += amount;
                 }
-                else if (kvoE == "Cash")
+
+                else if (type == "Cash")
                 {
-                    mangizi += broika;
+                    currency += amount;
                 }
             }
 
-            foreach (var x in torba)
+            foreach (var type in bag)
             {
-                Console.WriteLine($"<{x.Key}> ${x.Value.Values.Sum()}");
-                foreach (var item2 in x.Value.OrderByDescending(y => y.Key).ThenBy(y => y.Value))
+                Console.WriteLine($"<{type.Key}> ${type.Value.Values.Sum()}");
+
+                foreach (var item in type.Value.OrderByDescending(y => y.Key).ThenBy(y => y.Value))
                 {
-                    Console.WriteLine($"##{item2.Key} - {item2.Value}");
+                    Console.WriteLine($"##{item.Key} - {item.Value}");
                 }
             }
         }
