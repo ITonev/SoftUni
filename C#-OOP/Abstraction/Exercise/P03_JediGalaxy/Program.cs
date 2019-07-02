@@ -3,63 +3,94 @@ using System.Linq;
 
 namespace P03_JediGalaxy
 {
-    class Program
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
-            int[] dimestions = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
-            int x = dimestions[0];
-            int y = dimestions[1];
+            int[] dimestions = Console.ReadLine()
+                .Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
 
-            int[,] matrix = new int[x, y];
+            int[,] matrix = new int[dimestions[0], dimestions[1]];
 
-            int value = 0;
-            for (int i = 0; i < x; i++)
-            {
-                for (int j = 0; j < y; j++)
-                {
-                    matrix[i, j] = value++;
-                }
-            }
+            FillMatrix(matrix);
 
             string command = Console.ReadLine();
-            long sum = 0;
+
+            long IvoTotalSum = 0;
+
             while (command != "Let the Force be with you")
             {
-                int[] ivoS = command.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
-                int[] evil = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
-                int xE = evil[0];
-                int yE = evil[1];
+                int[] IvoLocation = command
+                    .Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse)
+                    .ToArray();
 
-                while (xE >= 0 && yE >= 0)
+                int[] evilLocation = Console.ReadLine()
+                    .Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse)
+                    .ToArray();
+
+                int evilRow = evilLocation[0];
+                int evilCol = evilLocation[1];
+
+                while (evilRow >= 0 && evilCol >= 0)
                 {
-                    if (xE >= 0 && xE < matrix.GetLength(0) && yE >= 0 && yE < matrix.GetLength(1))
+
+                    if (MatrixBoundriesCheck(matrix, evilRow, evilCol))
                     {
-                        matrix[xE, yE] = 0;
+                        matrix[evilRow, evilCol] = 0;
                     }
-                    xE--;
-                    yE--;
+
+                    evilRow--;
+                    evilCol--;
                 }
 
-                int xI = ivoS[0];
-                int yI = ivoS[1];
+                int ivoRow = IvoLocation[0];
+                int ivoCol = IvoLocation[1];
 
-                while (xI >= 0 && yI < matrix.GetLength(1))
+                while (ivoRow >= 0 && ivoCol < matrix.GetLength(1))
                 {
-                    if (xI >= 0 && xI < matrix.GetLength(0) && yI >= 0 && yI < matrix.GetLength(1))
+                    if (MatrixBoundriesCheck(matrix, ivoRow,ivoCol))
                     {
-                        sum += matrix[xI, yI];
+                        IvoTotalSum += matrix[ivoRow, ivoCol];
                     }
 
-                    yI++;
-                    xI--;
+                    ivoRow--;
+                    ivoCol++;
                 }
 
                 command = Console.ReadLine();
             }
 
-            Console.WriteLine(sum);
+            Console.WriteLine(IvoTotalSum);
+        }
 
+        private static bool MatrixBoundriesCheck(int[,] matrix, int row, int col)
+        {
+            if (row >= 0 
+                && row < matrix.GetLength(0) 
+                && col >= 0 
+                && col < matrix.GetLength(1))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static void FillMatrix(int[,] matrix)
+        {
+            int currentCellValue = 0;
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    matrix[i, j] = currentCellValue++;
+                }
+            }
         }
     }
 }
