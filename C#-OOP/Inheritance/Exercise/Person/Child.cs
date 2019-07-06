@@ -10,18 +10,5 @@ namespace Person
             : base(name, age)
         {
         }
-
-        public int Age
-        {
-            get
-            {
-                return base.Age;
-            }
-
-            set
-            {
-                base.Age = value;
-            }
-        }
     }
 }
