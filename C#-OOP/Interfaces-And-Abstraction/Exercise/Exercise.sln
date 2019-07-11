@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonInfo", "PersonInfo\PersonInfo.csproj", "{04F76BCA-743A-4444-8DC7-77FA5274B1EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonInfo", "PersonInfo\PersonInfo.csproj", "{04F76BCA-743A-4444-8DC7-77FA5274B1EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car", "Car\Car.csproj", "{8DA0AFEF-0D3F-4200-BC5F-690F05C34598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telephony", "Telephony\Telephony.csproj", "{FA21321C-45B1-4367-B175-A0EF9BB27480}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{04F76BCA-743A-4444-8DC7-77FA5274B1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04F76BCA-743A-4444-8DC7-77FA5274B1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04F76BCA-743A-4444-8DC7-77FA5274B1EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA0AFEF-0D3F-4200-BC5F-690F05C34598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA0AFEF-0D3F-4200-BC5F-690F05C34598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA0AFEF-0D3F-4200-BC5F-690F05C34598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA0AFEF-0D3F-4200-BC5F-690F05C34598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA21321C-45B1-4367-B175-A0EF9BB27480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA21321C-45B1-4367-B175-A0EF9BB27480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA21321C-45B1-4367-B175-A0EF9BB27480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA21321C-45B1-4367-B175-A0EF9BB27480}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
