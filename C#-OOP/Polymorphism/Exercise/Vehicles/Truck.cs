@@ -6,8 +6,8 @@ namespace Vehicles
 {
     public class Truck : Vehicle
     {
-        public Truck(double fuelQuantity, double fuelConsumption)
-            : base(fuelQuantity, fuelConsumption)
+        public Truck(double fuelQuantity, double fuelConsumption, double tankCapacity)
+            : base(fuelQuantity, fuelConsumption, tankCapacity)
         {
             this.FuelConsumption += 1.6;
         }
@@ -21,13 +21,29 @@ namespace Vehicles
                 return $"{nameof(Truck)} needs refueling";
             }
 
-            this.FuelQuantity -= fuelNeeded;
-            return $"{nameof(Truck)} travelled {distance} km";
+            else
+            {
+                this.FuelQuantity -= fuelNeeded;
+                return $"{nameof(Truck)} travelled {distance} km";
+            }
         }
 
         public override void Refuel(double fuelQuantity)
         {
-            this.FuelQuantity += (fuelQuantity*0.95);
+            if (fuelQuantity <= 0)
+            {
+                throw new ArgumentException("Fuel must be a positive number");
+            }
+
+            if (this.TankCapacity < this.FuelQuantity + (fuelQuantity * 0.95))
+            {
+                Console.WriteLine($"Cannot fit {fuelQuantity} fuel in the tank");
+            }
+
+            else
+            {
+                this.FuelQuantity += (fuelQuantity * 0.95);
+            }
         }
     }
 }

@@ -6,8 +6,8 @@ namespace Vehicles
 {
     public class Car : Vehicle
     {
-        public Car(double fuelQuantity, double fuelConsumption) 
-            : base(fuelQuantity, fuelConsumption)
+        public Car(double fuelQuantity, double fuelConsumption, double tankCapacity)
+            : base(fuelQuantity, fuelConsumption, tankCapacity)
         {
             this.FuelConsumption += 0.9;
         }
@@ -21,13 +21,11 @@ namespace Vehicles
                 return $"{nameof(Car)} needs refueling";
             }
 
-            this.FuelQuantity -= fuelNeeded;
-            return $"{nameof(Car)} travelled {distance} km";
-        }
-
-        public override void Refuel(double fuelQuantity)
-        {
-            this.FuelQuantity += fuelQuantity;
+            else
+            {
+                this.FuelQuantity -= fuelNeeded;
+                return $"{nameof(Car)} travelled {distance} km";
+            }
         }
     }
 }

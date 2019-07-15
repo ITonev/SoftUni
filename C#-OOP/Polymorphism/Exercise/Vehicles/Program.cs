@@ -2,15 +2,19 @@
 
 namespace Vehicles
 {
-   public class Program
+    public class Program
     {
-       public static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var carInfo = Console.ReadLine().Split();
-            var truckInfo = Console.ReadLine().Split();
+            Vehicle car = new Car(double.Parse(carInfo[1]), double.Parse(carInfo[2]), double.Parse(carInfo[3]));
 
-            Vehicle car = new Car(double.Parse(carInfo[1]), double.Parse(carInfo[2]));
-            Vehicle truck = new Truck(double.Parse(truckInfo[1]), double.Parse(truckInfo[2]));
+            var truckInfo = Console.ReadLine().Split();
+            Vehicle truck = new Truck(double.Parse(truckInfo[1]), double.Parse(truckInfo[2]), double.Parse(truckInfo[3]));
+
+            var busInfo = Console.ReadLine().Split();
+            Vehicle bus = new Bus(double.Parse(busInfo[1]), double.Parse(busInfo[2]), double.Parse(busInfo[3]));
+
 
             var commands = int.Parse(Console.ReadLine());
 
@@ -21,40 +25,59 @@ namespace Vehicles
                 var command = tokens[0];
                 var vehicle = tokens[1];
 
-                if (command=="Drive")
+                if (command.StartsWith("Drive"))
                 {
                     double distance = double.Parse(tokens[2]);
 
-                    if (vehicle=="Car")
+                    switch (vehicle)
                     {
-                        Console.WriteLine(car.Drive(distance));
-                    }
+                        case "Car":
+                            Console.WriteLine(car.Drive(distance));
+                            break;
 
-                    else if (vehicle=="Truck")
-                    {
-                        Console.WriteLine(truck.Drive(distance));
+                        case "Truck":
+                            Console.WriteLine(truck.Drive(distance));
+                            break;
+
+                        case "Bus":
+                            var someBus = bus as Bus;
+
+                            Console.WriteLine(command == "Drive" ? someBus.Drive(distance) : someBus.DriveEmpty(distance));
+                            break;
                     }
                 }
 
-                else if (command=="Refuel")
+                else if (command == "Refuel")
                 {
-                    double fuel = double.Parse(tokens[2]);
-
-                    if (vehicle == "Car")
+                    try
                     {
-                        car.Refuel(fuel);
-                    }
+                        double fuel = double.Parse(tokens[2]);
 
-                    else if (vehicle == "Truck")
+                        switch (vehicle)
+                        {
+                            case "Car":
+                                car.Refuel(fuel);
+                                break;
+
+                            case "Truck":
+                                truck.Refuel(fuel);
+                                break;
+
+                            case "Bus":
+                                bus.Refuel(fuel);
+                                break;
+                        }
+                    }
+                    catch (ArgumentException ex)
                     {
-                        truck.Refuel(fuel);
+                        Console.WriteLine(ex.Message);
                     }
-
                 }
             }
 
             Console.WriteLine($"{nameof(Car)}: {car.FuelQuantity:f2}");
             Console.WriteLine($"{nameof(Truck)}: {truck.FuelQuantity:f2}");
+            Console.WriteLine($"{nameof(Bus)}: {bus.FuelQuantity:f2}");
         }
     }
 }
