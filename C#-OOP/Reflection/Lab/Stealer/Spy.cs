@@ -55,5 +55,48 @@ public class Spy
 
         return sb.ToString().Trim();
     }
+
+    public string RevealPrivateMethods(string className)
+    {
+        var classtype = Type.GetType(className);
+
+        var methods = classtype.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine($"All Private Methods of Class: {classtype}")
+            .AppendLine($"Base Class: {classtype.BaseType.Name}");
+
+        foreach (var method in methods)
+        {
+            sb.AppendLine(method.Name);
+        }
+
+        return sb.ToString().Trim();
+    }
+
+    public string CollectGettersAndSetters(string className)
+    {
+        var classType = Type.GetType(className);
+
+        var methods = classType.GetMethods(BindingFlags.Instance
+                        | BindingFlags.Public
+                        | BindingFlags.Static
+                        | BindingFlags.NonPublic);
+
+        StringBuilder sb = new StringBuilder();
+
+        foreach (var method in methods.Where(x=>x.Name.StartsWith("get")))
+        {
+            sb.AppendLine($"{method.Name} will return {method.ReturnType}");
+        }
+
+        foreach (var method in methods.Where(x => x.Name.StartsWith("set")))
+        {
+            sb.AppendLine($"{method.Name} will set field of {method.GetParameters().FirstOrDefault().ParameterType}");
+        }
+
+        return sb.ToString().Trim();
+    }
 }
 

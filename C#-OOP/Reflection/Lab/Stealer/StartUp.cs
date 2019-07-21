@@ -6,7 +6,7 @@
         {
             Spy spy = new Spy();
 
-            var result = spy.AnalyzeAcessModifiers("Hacker");
+            var result = spy.CollectGettersAndSetters("Hacker");
 
             Console.WriteLine(result);
         }
