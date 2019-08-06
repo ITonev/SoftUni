@@ -133,11 +133,6 @@ namespace MXGP.Core
                 throw new InvalidOperationException(string.Format(ExceptionMessages.RaceInvalid, raceName, 3));
             }
 
-            foreach (var rider in race.Riders)
-            {
-                rider.Motorcycle.CalculateRacePoints(race.Laps);
-            }
-
             var orderedRidersList = race.Riders
                 .OrderByDescending(x => x.Motorcycle.CalculateRacePoints(race.Laps))
                 .Take(3)
