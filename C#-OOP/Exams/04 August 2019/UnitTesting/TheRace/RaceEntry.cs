@@ -14,7 +14,7 @@
 
         private Dictionary<string, UnitRider> riders;
 
-        public RaceEntry()
+        public RaceEntry()  
         {
             this.riders = new Dictionary<string, UnitRider>();
         }
