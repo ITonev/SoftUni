@@ -366,6 +366,12 @@ Id INT PRIMARY KEY IDENTITY,
 [Name] NVARCHAR(30) NOT NULL
 )
 
+INSERT INTO Towns([Name]) VALUES
+('Sofia'),
+('Plovdiv'),
+('Varna'),
+('Burgas')
+
 CREATE TABLE Addresses(
 Id INT PRIMARY KEY IDENTITY,
 AddressText NVARCHAR(100) NOT NULL,
@@ -377,6 +383,12 @@ Id INT PRIMARY KEY IDENTITY,
 [Name] NVARCHAR(30) NOT NULL
 )
 
+INSERT INTO Departments([Name]) VALUES
+('Engineering'),
+('Sales'),
+('Software Development'),
+('Quality Assurance')
+
 CREATE TABLE Employees(
 Id INT PRIMARY KEY IDENTITY,
 FirstName NVARCHAR(30) NOT NULL,
@@ -385,7 +397,17 @@ LastName NVARCHAR(30) NOT NULL,
 JobTitle NVARCHAR(50) NOT NULL,
 DepartmentId INT FOREIGN KEY REFERENCES Departments(Id) NOT NULL,
 HireDate DATE NOT NULL,
-Salary INT,
-AddressId INT FOREIGN KEY REFERENCES Addresses(Id) NOT NULL,
+Salary DECIMAL(8,2),
+AddressId INT FOREIGN KEY REFERENCES Addresses(Id),
 )
 
+INSERT INTO Employees(FirstName, MiddleName, LastName, JobTitle, DepartmentId, HireDate, Salary) VALUES
+('Ivan', 'Ivanov', 'Ivanov', '.NET Developer', 3, '2013/01/02', 3500.00),
+('Petar', 'Petrov', 'Petrov', 'Senior Engineer', 1, '2012/01/02', 4000.00),
+('Maria ', 'Petrova', 'Ivanova', 'Intern', 4, '2011/01/02', 525.25),
+('Georgi ', 'Teziev', 'Ivanov', 'CEO', 2, '2000/01/02', 3000.00),
+('Peter', 'Pan', 'Pan', 'Intern', 1, '2018/01/02', 599.88)
+
+SELECT * FROM Towns
+SELECT * FROM Departments
+SELECT * FROM Employees
