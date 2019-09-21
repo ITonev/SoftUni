@@ -408,6 +408,12 @@ INSERT INTO Employees(FirstName, MiddleName, LastName, JobTitle, DepartmentId, H
 ('Georgi ', 'Teziev', 'Ivanov', 'CEO', 2, '2000/01/02', 3000.00),
 ('Peter', 'Pan', 'Pan', 'Intern', 1, '2018/01/02', 599.88)
 
-SELECT * FROM Towns
-SELECT * FROM Departments
-SELECT * FROM Employees
+SELECT [Name] FROM Towns
+ORDER BY [Name]
+
+SELECT [Name] FROM Departments
+ORDER BY [Name]
+
+SELECT [FirstName], [LastName], [JobTitle], [Salary] FROM Employees
+ORDER BY Salary DESC
+
