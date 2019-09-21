@@ -417,3 +417,13 @@ ORDER BY [Name]
 SELECT [FirstName], [LastName], [JobTitle], [Salary] FROM Employees
 ORDER BY Salary DESC
 
+UPDATE Employees
+SET Salary+=Salary*0.1
+
+SELECT [Salary] FROM Employees
+
+UPDATE Payments
+SET TaxRate -= TaxRate * 0.03;
+SELECT TaxRate FROM Payments
+
+TRUNCATE Table Occupancies 
