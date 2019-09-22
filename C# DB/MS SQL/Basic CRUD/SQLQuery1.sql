@@ -84,5 +84,7 @@ SELECT CASE
 	FROM Countries
 ORDER BY Currency
 
+USE Diablo
 
-
+SELECT [Name] FROM Characters
+ORDER BY [Name]
