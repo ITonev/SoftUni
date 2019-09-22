@@ -23,3 +23,18 @@ WHERE Salary IN (25000,14000,12500,23600)
 SELECT FirstName, LastName FROM Employees
 WHERE ManagerID IS NULL
 
+SELECT FirstName, LastName, Salary FROM Employees
+WHERE Salary >=50000
+ORDER BY Salary DESC
+
+
+SELECT TOP(5) FirstName, LastName FROM Employees
+ORDER BY Salary DESC
+
+
+SELECT FirstName, LastName FROM Employees
+	WHERE DepartmentID != 4
+
+SELECT * FROM Employees
+	ORDER BY Salary DESC, FirstName, LastName DESC, MiddleName
+
