@@ -55,3 +55,34 @@ SELECT DISTINCT JobTitle FROM Employees
 
 SELECT TOP(10) * FROM Projects
 ORDER BY StartDate, [Name]
+
+SELECT TOP(7) FirstName, LastName, HireDate FROM Employees
+ORDER BY HireDate DESC
+
+SELECT * FROM Departments
+
+UPDATE Employees
+	SET Salary *= 1.12
+	 WHERE DepartmentID IN (1,2,4,11)
+
+SELECT Salary FROM Employees
+
+USE Geography
+
+SELECT PeakName FROM Peaks
+ORDER BY PeakName
+
+SELECT TOP(30) CountryName, Population FROM Countries
+WHERE ContinentCode = 'EU'
+ORDER BY [Population] DESC
+
+SELECT CASE 
+		WHEN CurrencyCode = 'EUR' 
+		THEN 'Euro' 
+		ELSE 'Not Euro' 
+	   END AS Currency  
+	FROM Countries
+ORDER BY Currency
+
+
+
