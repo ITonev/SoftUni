@@ -41,7 +41,11 @@ CREATE VIEW V_EmployeesHiredAfter2000 AS
 		  FirstName,
 		  LastName,
 		  Salary,
-		  DENSE_RANK() OVER (PARTITION BY Salary ORDER BY EmployeeID)
-     FROM Employees
-	WHERE Salary BETWEEN 10000 AND 50000
- ORDER BY Salary DESC
+		  [Rank]
+	 FROM 
+	 ( SELECT *, DENSE_RANK() OVER (PARTITION BY Salary ORDER BY EmployeeID) AS [Rank] FROM Employees
+		WHERE (Salary BETWEEN 10000 AND 50000)
+	 ) AS a
+	 WHERE a.[Rank] = 2
+	 ORDER BY Salary DESC
+
