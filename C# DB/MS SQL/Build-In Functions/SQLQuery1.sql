@@ -49,3 +49,12 @@ CREATE VIEW V_EmployeesHiredAfter2000 AS
 	 WHERE a.[Rank] = 2
 	 ORDER BY Salary DESC
 
+USE [Geography]
+
+  SELECT CountryName,
+ 		 IsoCode
+    FROM Countries
+   WHERE CountryName LIKE '%a%a%a%'
+ORDER BY IsoCode
+
+
