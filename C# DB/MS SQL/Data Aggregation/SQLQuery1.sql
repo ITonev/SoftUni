@@ -58,6 +58,8 @@ ORDER BY w.MagicWandCreator, w.DepositGroup
 FROM WizzardDeposits) AS w
 GROUP BY w.AgeGroup
 
+SELECT * FROM WizzardDeposits
+
 
 
 
