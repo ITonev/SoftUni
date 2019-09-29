@@ -43,7 +43,7 @@ GROUP BY w.DepositGroup, w.MagicWandCreator
 ORDER BY w.MagicWandCreator, w.DepositGroup
 
  SELECT w.AgeGroup,
-        COUNT(w.AgeGroup) AS WizzardCount
+        COUNT(*) AS WizzardCount
  FROM
 (SELECT 
 	CASE
@@ -58,7 +58,7 @@ ORDER BY w.MagicWandCreator, w.DepositGroup
 FROM WizzardDeposits) AS w
 GROUP BY w.AgeGroup
 
-SELECT DISTINCT LEFT(w.FirstName, 1) AS FirstLetter 
+SELECT LEFT(w.FirstName, 1) AS FirstLetter 
 FROM WizzardDeposits w
 WHERE w.DepositGroup = 'Troll Chest'
 GROUP BY LEFT(w.FirstName, 1)
@@ -73,9 +73,11 @@ WHERE w.DepositStartDate > '01/01/1985'
 GROUP BY w.DepositGroup, w.IsDepositExpired
 ORDER BY w.DepositGroup DESC
 
-SELECT *
-FROM WizzardDeposits AS w
-WHERE w.Id BETWEEN 1 AND 161
+SELECT SUM(Diff.Deposits) AS SumDifference 
+FROM 
+	(SELECT FirstName AS [Host Wizzard],
+    (DepositAmount - (SELECT wd.DepositAmount FROM WizzardDeposits AS wd WHERE w.Id+1 = wd.Id)) AS Deposits
+FROM WizzardDeposits AS w) AS Diff
 
 
 USE SoftUni
@@ -116,12 +118,20 @@ SELECT COUNT(*) AS Count
 FROM Employees AS e
 WHERE e.ManagerID IS NULL
 
+SELECT DepartmentID, Salary AS [ThirdHighestSalary] 
+FROM 
+	(SELECT DepartmentID, Salary,
+	 DENSE_RANK() OVER(PARTITION BY DepartmentId ORDER BY SALARY DESC) AS [Rank]
+     FROM Employees) AS [RankingTable]
+WHERE [Rank] = 3
+GROUP BY DepartmentID, Salary
+
 SELECT TOP(10) e.FirstName,
        e.LastName,
 	   e.DepartmentID
 FROM Employees AS e
+WHERE e.Salary > (SELECT AVG(em.Salary) FROM Employees AS em WHERE em.DepartmentID=e.DepartmentID)
 ORDER BY e.DepartmentID
-
 
 
 
