@@ -73,12 +73,24 @@ WHERE w.DepositStartDate > '01/01/1985'
 GROUP BY w.DepositGroup, w.IsDepositExpired
 ORDER BY w.DepositGroup DESC
 
+SELECT *
+FROM WizzardDeposits AS w
+WHERE w.Id BETWEEN 1 AND 161
 
 
+USE SoftUni
 
+SELECT e.DepartmentID,
+       SUM(e.Salary) AS TotalSalary
+FROM Employees AS e
+GROUP BY e.DepartmentID
+ORDER BY e.DepartmentID
 
-
-
+SELECT e.DepartmentID,
+       MIN(e.Salary) AS MinimumSalary
+FROM Employees AS e
+WHERE e.DepartmentID IN (2,5,7) AND e.HireDate > '01/01/2000'
+GROUP BY e.DepartmentID
 
 
 
