@@ -58,19 +58,20 @@ ORDER BY w.MagicWandCreator, w.DepositGroup
 FROM WizzardDeposits) AS w
 GROUP BY w.AgeGroup
 
-SELECT * FROM WizzardDeposits
+SELECT DISTINCT LEFT(w.FirstName, 1) AS FirstLetter 
+FROM WizzardDeposits w
+WHERE w.DepositGroup = 'Troll Chest'
+GROUP BY LEFT(w.FirstName, 1)
+ORDER BY FirstLetter
 
 
-
-
-
-
-
-
-
-
-
-
+SELECT w.DepositGroup,
+	   w.IsDepositExpired,
+       AVG(w.DepositInterest) AS AverageInterest
+FROM WizzardDeposits AS w
+WHERE w.DepositStartDate > '01/01/1985'
+GROUP BY w.DepositGroup, w.IsDepositExpired
+ORDER BY w.DepositGroup DESC
 
 
 
