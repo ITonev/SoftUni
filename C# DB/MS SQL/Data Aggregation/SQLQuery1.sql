@@ -92,20 +92,35 @@ FROM Employees AS e
 WHERE e.DepartmentID IN (2,5,7) AND e.HireDate > '01/01/2000'
 GROUP BY e.DepartmentID
 
+SELECT *
+INTO NewTestTable
+FROM Employees AS e
+WHERE e.Salary > 30000
+DELETE FROM NewTestTable 
+WHERE NewTestTable.ManagerID=42
+UPDATE NewTestTable
+SET Salary+=5000
+WHERE NewTestTable.DepartmentID=1
+SELECT n.DepartmentID,
+       AVG(n.Salary) AS AverageSalary
+FROM NewTestTable AS n
+GROUP BY n.DepartmentID
 
+SELECT e.DepartmentID,
+       MAX(e.Salary) AS MaxSalary
+FROM Employees AS e
+GROUP BY e.DepartmentID
+HAVING MAX(e.Salary) NOT BETWEEN 30000 AND 70000
 
+SELECT COUNT(*) AS Count
+FROM Employees AS e
+WHERE e.ManagerID IS NULL
 
-
-
-
-
-
-
-
-
-
-
-
+SELECT TOP(10) e.FirstName,
+       e.LastName,
+	   e.DepartmentID
+FROM Employees AS e
+ORDER BY e.DepartmentID
 
 
 
