@@ -68,8 +68,32 @@ FROM Models AS m
 JOIN Manufacturers AS ma 
 ON m.ManufacturerID=ma.ManufacturerID
 
+CREATE TABLE Students(
+StudentID INT NOT NULL,
+[Name] NVARCHAR(30)
+CONSTRAINT PK_Students
+PRIMARY KEY(StudentID)
+)
 
+CREATE TABLE Exams(
+ExamID INT PRIMARY KEY NOT NULL,
+[Name] NVARCHAR(30)
+)
 
+CREATE TABLE StudentsExams(
+StudentID INT NOT NULL,
+ExamID INT NOT NULL,
+CONSTRAINT PK_StudentsExams
+PRIMARY KEY (StudentID, ExamID)
+)
+
+ALTER TABLE StudentsExams
+ADD CONSTRAINT FK_StudentsExams_Students
+FOREIGN KEY(StudentID) REFERENCES Students(StudentID)
+
+ALTER TABLE StudentsExams
+ADD CONSTRAINT FK_StudentsExams_Exams
+FOREIGN KEY(ExamID) REFERENCES Exams(ExamID)
 
 
 
