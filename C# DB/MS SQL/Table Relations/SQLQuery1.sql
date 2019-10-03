@@ -32,8 +32,8 @@ FOREIGN KEY(PassportID) REFERENCES Passports(PassportID)
 
 CREATE TABLE Models(
 ModelID INT NOT NULL,
-[Name] NVARCHAR(30),
-ManufacturerID INT
+[Name] VARCHAR(30),
+ManufacturerID INT NOT NULL
 CONSTRAINT PK_Models
 PRIMARY KEY(ModelID)
 )
@@ -46,14 +46,27 @@ INSERT INTO Models(ModelID,[Name],ManufacturerID) VALUES
 (105, 'Model 3', 2),
 (106, 'Nova', 3)
 
+CREATE TABLE Manufacturers(
+ManufacturerID INT NOT NULL,
+[Name] VARCHAR(30),
+EstablishedOn DATE,
+CONSTRAINT PK_Manufacturers
+PRIMARY KEY(ManufacturerID)
+)
 
+INSERT INTO Manufacturers(ManufacturerID,Name,EstablishedOn) VALUES
+(1, 'BMW', '07/03/1916'),
+(2, 'Tesla', '01/01/2003'),
+(3, 'Lada', '01/05/1966')
 
+ALTER TABLE Models
+ADD CONSTRAINT FK_Models_Manifacturer
+FOREIGN KEY(ManufacturerID) REFERENCES Manufacturers(ManufacturerID)
 
-
-
-
-
-
+SELECT m.Name, ma.Name, ma.EstablishedOn 
+FROM Models AS m
+JOIN Manufacturers AS ma 
+ON m.ManufacturerID=ma.ManufacturerID
 
 
 
