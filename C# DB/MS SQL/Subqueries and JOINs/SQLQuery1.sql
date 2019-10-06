@@ -44,11 +44,31 @@ AND p.StartDate > '20020813'
 AND p.EndDate IS NULL
 ORDER BY e.EmployeeID
 
+SELECT e.EmployeeID, 
+       e.FirstName,
+	   CASE 
+	      WHEN YEAR(p.StartDate) >= 2005 THEN NULL
+		  ELSE p.[Name]
+       END AS ProjectName
+FROM Employees AS e
+JOIN EmployeesProjects AS em ON e.EmployeeID=em.EmployeeID
+AND e.EmployeeID = 24
+JOIN Projects AS p ON p.ProjectID=em.ProjectID
 
+SELECT e.EmployeeID, e.FirstName, e.ManagerID, em.FirstName
+FROM Employees AS e
+JOIN Employees AS em ON e.ManagerID = em.EmployeeID
+WHERE e.ManagerID IN (3, 7)
 
-
-
-
+SELECT  TOP 50
+        e.EmployeeID, 
+		CONCAT(e.FirstName, ' ', e.LastName) AS EmployeeName,
+		CONCAT(em.FirstName, ' ', em.LastName) AS ManagerName, 
+		d.[Name] AS DepartmentName
+FROM Employees AS e
+JOIN Employees AS em ON e.ManagerID = em.EmployeeID
+JOIN Departments AS d ON e.DepartmentID = d.DepartmentID
+ORDER BY e.EmployeeID
 
 
 
