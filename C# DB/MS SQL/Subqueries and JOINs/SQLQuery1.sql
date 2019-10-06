@@ -71,6 +71,10 @@ JOIN Departments AS d ON e.DepartmentID = d.DepartmentID
 ORDER BY e.EmployeeID
 
 
+SELECT MIN(es.Salaries) AS MinAverageSalary 
+FROM (SELECT e.DepartmentID, AVG(e.Salary) AS Salaries
+FROM Employees AS e
+GROUP BY e.DepartmentID) AS es 
 
 
 
