@@ -95,19 +95,23 @@ FULL JOIN Rivers as r ON r.Id=co.RiverId
 WHERE c.ContinentCode = 'AF'
 ORDER BY c.CountryName 
 
+SELECT c.ContinentCode, c.CurrencyCode, COUNT(c.CountryName) AS somet
+FROM Countries AS c
+GROUP BY c.ContinentCode, c.CurrencyCode
 
+SELECT COUNT(c.CountryName) AS [Count]
+FROM Countries AS c
+FULL JOIN MountainsCountries AS m ON c.CountryCode=m.CountryCode WHERE m.MountainId IS NULL
 
-
-
-
-
-
-
-
-
-
-
-
+SELECT TOP 5 c.CountryName, MAX(p.Elevation) AS HighestPeakElevation, MAX(r.[Length]) AS LongestRiverLength 
+FROM Countries AS c
+FULL JOIN MountainsCountries AS mc ON c.CountryCode = mc.CountryCode
+FULL JOIN Mountains AS m ON m.Id = mc.MountainId
+FULL JOIN Peaks AS p ON p.MountainId = m.Id
+FULL JOIN CountriesRivers AS cr ON cr.CountryCode=c.CountryCode
+FULL JOIN Rivers AS r ON r.Id=cr.RiverId
+GROUP BY c.CountryName
+ORDER BY MAX(p.Elevation) DESC, MAX(r.[Length]) DESC, c.CountryName 
 
 
 
