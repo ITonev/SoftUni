@@ -70,27 +70,30 @@ JOIN Employees AS em ON e.ManagerID = em.EmployeeID
 JOIN Departments AS d ON e.DepartmentID = d.DepartmentID
 ORDER BY e.EmployeeID
 
-
 SELECT MIN(es.Salaries) AS MinAverageSalary 
 FROM (SELECT e.DepartmentID, AVG(e.Salary) AS Salaries
 FROM Employees AS e
 GROUP BY e.DepartmentID) AS es 
 
+SELECT mc.CountryCode, m.MountainRange, p.PeakName, p.Elevation
+FROM Peaks AS p
+JOIN Mountains AS m ON p.MountainId=m.Id
+JOIN MountainsCountries AS mc ON m.Id = mc.MountainId
+WHERE p.Elevation > 2835 AND mc.CountryCode = 'BG'
+ORDER BY p.Elevation DESC
 
+SELECT mc.CountryCode, COUNT(m.MountainRange) AS MountainRanges
+FROM MountainsCountries AS mc
+JOIN Mountains AS m ON m.Id=mc.MountainId
+GROUP BY mc.CountryCode
+HAVING mc.CountryCode IN ('US', 'RU', 'BG')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT TOP 5 c.CountryName, r.RiverName 
+FROM Countries AS c
+FULL JOIN CountriesRivers AS co ON c.CountryCode = co.CountryCode
+FULL JOIN Rivers as r ON r.Id=co.RiverId
+WHERE c.ContinentCode = 'AF'
+ORDER BY c.CountryName 
 
 
 
