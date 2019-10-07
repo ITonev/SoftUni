@@ -123,14 +123,19 @@ FULL JOIN Rivers AS r ON r.Id=cr.RiverId
 GROUP BY c.CountryName
 ORDER BY MAX(p.Elevation) DESC, MAX(r.[Length]) DESC, c.CountryName 
 
-
-
-
-
-
-
-
-
+SELECT TOP(5) k.CountryName, k.[Highest Peak Name], k.[Highest Peak Elevation], k.Mountain
+FROM
+(SELECT c.CountryName,
+	   IIF(p.PeakName IS NULL, '(no highest peak)', p.PeakName) AS 'Highest Peak Name',
+	   IIF(p.PeakName IS NULL, 0, p.Elevation) AS 'Highest Peak Elevation',
+	   IIF(m.MountainRange IS NULL, '(no mountain)', m.MountainRange) AS 'Mountain',
+	   DENSE_RANK() OVER (PARTITION BY c.CountryName ORDER BY p.Elevation DESC) AS PeakRank
+FROM Countries AS c
+JOIN MountainsCountries AS mc ON mc.CountryCode=c.CountryCode
+JOIN Mountains AS m ON m.Id=mc.MountainId
+JOIN Peaks AS p ON p.MountainId=m.Id) AS k
+WHERE k.PeakRank=1
+ORDER BY k.CountryName, k.[Highest Peak Name] DESC
 
 
 
