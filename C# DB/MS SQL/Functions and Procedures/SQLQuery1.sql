@@ -57,16 +57,62 @@ END
 
 GO
 
+CREATE PROC usp_EmployeesBySalaryLevel (@SalaryLevel NVARCHAR(10))
+AS
+	SELECT FirstName, LastName 
+	FROM Employees
+	WHERE dbo.ufn_GetSalaryLevel(Salary) = @SalaryLevel
 
+GO
 
+EXEC usp_EmployeesBySalaryLevel 'high'
 
+GO
 
+-------CREATE FUNCTION ufn_IsWordComprised(@setOfLetters NVARCHAR(30), @word NVARCHAR(30))
+RETURNS VARCHAR(5)
+AS
+BEGIN
+	DECLARE @Counter INT = 0
+	DECLARE @miniMe VARCHAR(1)
+	DECLARE @result BIT
+	WHILE(@Counter <= LEN(@word))
+	  BEGIN
+	  SET @miniMe = SUBSTRING(@word, @Counter, 1)
+		IF(@setOfLetters NOT LIKE '%' + @miniMe + '%')
+		BEGIN
+		  SET @result = 0
+		END
+		ELSE SET @result =1
+	  END
+	  RETURN @result
+END
 
+GO
 
+--------------CREATE PROCEDURE usp_DeleteEmployeesFromDepartment (@departmentId INT)
+AS
+	ALTER TABLE EmployeesProjects
+	DROP CONSTRAINT FK_EmployeesProjects_Employees
 
+	ALTER TABLE Employees
+	DROP CONSTRAINT FK_Employees_Departments
+	
+	ALTER TABLE Employees
+	DROP CONSTRAINT FK_Employees_Department
 
+	ALTER TABLE EmployeesProjects
+	DROP CONSTRAINT FK_EmployeesProjects_Employees
 
+	DELETE FROM Employees WHERE DepartmentID = @departmentId
+	DELETE FROM Departments WHERE DepartmentID = @departmentId
+	SELECT COUNT(*)
+	FROM Employees
+	WHERE DepartmentID = @departmentId
 
+GO
+
+USE Bank
 
 
 
