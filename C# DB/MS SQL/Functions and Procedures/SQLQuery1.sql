@@ -69,28 +69,32 @@ EXEC usp_EmployeesBySalaryLevel 'high'
 
 GO
 
--------CREATE FUNCTION ufn_IsWordComprised(@setOfLetters NVARCHAR(30), @word NVARCHAR(30))
-RETURNS VARCHAR(5)
+CREATE FUNCTION ufn_IsWordComprised(@setOfLetters NVARCHAR(MAX), @word NVARCHAR(MAX))
+RETURNS BIT
 AS
 BEGIN
-	DECLARE @Counter INT = 0
-	DECLARE @miniMe VARCHAR(1)
-	DECLARE @result BIT
+	DECLARE @Counter INT = 1
+	DECLARE @currentLetter NVARCHAR(1)
+	
 	WHILE(@Counter <= LEN(@word))
 	  BEGIN
-	  SET @miniMe = SUBSTRING(@word, @Counter, 1)
-		IF(@setOfLetters NOT LIKE '%' + @miniMe + '%')
+	    SET @currentLetter = SUBSTRING(@word, @Counter, 1)
+		
+		DECLARE @CharIndex INT = CHARINDEX(@currentLetter, @setOfLetters)
+		
+		IF (@CharIndex <= 0)
 		BEGIN
-		  SET @result = 0
+		  RETURN 0
 		END
-		ELSE SET @result =1
+	    SET @Counter += 1	
 	  END
-	  RETURN @result
+
+	RETURN 1
 END
 
 GO
 
---------------CREATE PROCEDURE usp_DeleteEmployeesFromDepartment (@departmentId INT)
+CREATE PROCEDURE usp_DeleteEmployeesFromDepartment (@departmentId INT)
 AS
 	ALTER TABLE EmployeesProjects
 	DROP CONSTRAINT FK_EmployeesProjects_Employees
@@ -114,18 +118,39 @@ GO
 
 USE Bank
 
+GO
 
+CREATE PROC usp_GetHoldersFullName 
+AS
+	SELECT FirstName + ' ' + LastName AS [Full Name] 
+	FROM AccountHolders
 
+GO
 
+CREATE PROC usp_GetHoldersWithBalanceHigherThan (@number INT)
+AS
+	SELECT a.FirstName, a.LastName
+	FROM AccountHolders AS a
+	JOIN Accounts AS ac ON a.Id = ac.AccountHolderId
+	GROUP BY FirstName, LastName
+	HAVING SUM(ac.Balance) >= @number
+	ORDER BY a.FirstName, a.LastName 	
+GO
 
+EXEC usp_GetHoldersWithBalanceHigherThan 50000
 
+GO
 
+CREATE OR ALTER FUNCTION ufn_CalculateFutureValue (@sum DECIMAL(18,4), @YearlyInterestRate DECIMAL(10,4), @NumberOfYears INT)
+RETURNS DECIMAL(18,4)
+AS
+BEGIN
+DECLARE @result DECIMAL (18,4)
+	RETURN @sum * POWER(@sum + @YearlyInterestRate, @NumberOfYears)
+END
 
-
-
-
-
-
+GO
+EXEC ufn_CalculateFutureValue 1000, 0.1, 5
 
 
 
