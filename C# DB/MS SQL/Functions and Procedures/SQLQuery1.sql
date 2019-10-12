@@ -143,21 +143,22 @@ AS
 
 GO
 
-CREATE PROC usp_GetHoldersWithBalanceHigherThan (@number INT)
+CREATE PROC usp_GetHoldersWithBalanceHigherThan (@number MONEY)
 AS
 	SELECT a.FirstName, a.LastName
 	FROM AccountHolders AS a
 	JOIN Accounts AS ac ON a.Id = ac.AccountHolderId
-	GROUP BY FirstName, LastName
+	GROUP BY a.FirstName, a.LastName
 	HAVING SUM(ac.Balance) >= @number
 	ORDER BY a.FirstName, a.LastName 	
+
 GO
 
 EXEC usp_GetHoldersWithBalanceHigherThan 50000
 
 GO
 
-CREATE OR ALTER FUNCTION ufn_CalculateFutureValue (@sum DECIMAL(18,4), @YearlyInterestRate DECIMAL(10,4), @NumberOfYears INT)
+CREATE FUNCTION ufn_CalculateFutureValue (@sum DECIMAL(18,4), @YearlyInterestRate DECIMAL(10,4), @NumberOfYears INT)
 RETURNS DECIMAL(18,4)
 AS
 BEGIN
