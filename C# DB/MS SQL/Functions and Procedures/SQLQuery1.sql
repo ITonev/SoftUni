@@ -205,9 +205,8 @@ AS
 
 GO
 
-SELECT dbo.ufn_CashInUsersGames('Love in a mist') FROM Games
+SELECT * FROM dbo.ufn_CashInUsersGames('Love in a mist')
 
-GO
 
 
 
