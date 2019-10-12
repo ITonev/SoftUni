@@ -69,7 +69,7 @@ EXEC usp_EmployeesBySalaryLevel 'high'
 
 GO
 
-CREATE FUNCTION ufn_IsWordComprised(@setOfLetters NVARCHAR(MAX), @word NVARCHAR(MAX))
+CREATE OR ALTER FUNCTION ufn_IsWordComprised(@setOfLetters NVARCHAR(MAX), @word NVARCHAR(MAX))
 RETURNS BIT
 AS
 BEGIN
@@ -94,25 +94,41 @@ END
 
 GO
 
-CREATE PROCEDURE usp_DeleteEmployeesFromDepartment (@departmentId INT)
+CREATE OR ALTER PROCEDURE usp_DeleteEmployeesFromDepartment (@departmentId INT)
 AS
-	ALTER TABLE EmployeesProjects
-	DROP CONSTRAINT FK_EmployeesProjects_Employees
-
-	ALTER TABLE Employees
-	DROP CONSTRAINT FK_Employees_Departments
+BEGIN
+	DELETE FROM EmployeesProjects
+	WHERE EmployeeID IN (
+			SELECT EmployeeID 
+			FROM Employees 
+			WHERE DepartmentID=@departmentId
+			)
 	
-	ALTER TABLE Employees
-	DROP CONSTRAINT FK_Employees_Department
+	UPDATE Employees
+	SET ManagerID = NULL
+	WHERE ManagerID IN (
+			SELECT EmployeeID 
+			FROM Employees 
+			WHERE DepartmentID=@departmentId
+			)
 
-	ALTER TABLE EmployeesProjects
-	DROP CONSTRAINT FK_EmployeesProjects_Employees
+	ALTER TABLE Departments
+	ALTER COLUMN ManagerID INT
 
-	DELETE FROM Employees WHERE DepartmentID = @departmentId
-	DELETE FROM Departments WHERE DepartmentID = @departmentId
+	UPDATE Departments
+	SET ManagerID = NULL
+	WHERE DepartmentID = @departmentId
+
+	DELETE FROM Employees
+	WHERE DepartmentID=@departmentId
+
+	DELETE FROM Departments
+	WHERE DepartmentID=@departmentId
+
 	SELECT COUNT(*)
 	FROM Employees
-	WHERE DepartmentID = @departmentId
+	WHERE DepartmentID=@departmentId
+END
 
 GO
 
