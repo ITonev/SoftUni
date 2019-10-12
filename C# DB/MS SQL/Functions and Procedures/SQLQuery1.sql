@@ -158,17 +158,27 @@ EXEC usp_GetHoldersWithBalanceHigherThan 50000
 
 GO
 
-CREATE FUNCTION ufn_CalculateFutureValue (@sum DECIMAL(18,4), @YearlyInterestRate DECIMAL(10,4), @NumberOfYears INT)
+CREATE OR ALTER FUNCTION ufn_CalculateFutureValue (@sum DECIMAL(18,4), @YearlyInterestRate FLOAT, @NumberOfYears INT)
 RETURNS DECIMAL(18,4)
 AS
 BEGIN
-DECLARE @result DECIMAL (18,4)
-	RETURN @sum * POWER(@sum + @YearlyInterestRate, @NumberOfYears)
+	RETURN @sum * (POWER(1 + @YearlyInterestRate, @NumberOfYears))
 END
 
 GO
-EXEC ufn_CalculateFutureValue 1000, 0.1, 5
 
+CREATE PROC usp_CalculateFutureValueForAccount (@AccountID INT, @InterestRate DECIMAL(18,4))
+AS
+BEGIN
+	SELECT a.Id AS [Account Id], 
+		   a.FirstName, 
+		   a.LastName, 
+		   ac.Balance AS [Current Balance],
+		   dbo.ufn_CalculateFutureValue (ac.Balance, @InterestRate, 5) AS [Balance in 5 years] 
+	FROM AccountHolders AS a
+	JOIN Accounts AS ac ON ac.Id=a.Id
+	WHERE a.Id=@AccountID
+END
 
 
 
