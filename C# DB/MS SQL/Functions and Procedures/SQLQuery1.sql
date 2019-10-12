@@ -180,11 +180,34 @@ BEGIN
 	WHERE a.Id=@AccountID
 END
 
+GO
 
+USE Diablo
 
+GO
 
+CREATE FUNCTION ufn_CashInUsersGames(@GameName NVARCHAR(30))
+RETURNS TABLE
+AS
+	RETURN
+	 SELECT SUM(asd.Cash) AS SumCash
+		FROM 
+	(
+	   SELECT 
+			g.[Name], 
+		    u.Cash,
+			ROW_NUMBER() OVER (PARTITION BY g.[Name] ORDER BY u.Cash DESC) AS [Row]
+	   FROM UsersGames AS u
+	   JOIN Games AS g ON g.Id = u.GameId
+	   WHERE g.Name = @GameName
+	   ) AS asd
+	   WHERE asd.[Row] % 2 <> 0
 
+GO
 
+SELECT dbo.ufn_CashInUsersGames('Love in a mist') FROM Games
+
+GO
 
 
 
