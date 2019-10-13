@@ -207,10 +207,38 @@ GO
 
 SELECT * FROM dbo.ufn_CashInUsersGames('Love in a mist')
 
+GO
 
+CREATE TABLE Logs
+(
+	LogId INT PRIMARY KEY IDENTITY,
+	AccountId INT,
+	OldSum DECIMAL(15, 2),
+	NewSum DECIMAL(15, 2)
+)
 
+GO
 
+CREATE TRIGGER tr_NewTrigger ON Accounts FOR UPDATE
+AS
+BEGIN
+	DECLARE @newSum DECIMAL(15, 2) = (SELECT i.[Balance] FROM [INSERTED] AS i)
+	DECLARE @oldSum DECIMAL(15, 2) = (SELECT d.[Balance] FROM [DELETED] AS d)
+	DECLARE @accountId INT = (SELECT i.[Id] FROM [INSERTED] AS i)
 
+	INSERT INTO Logs(AccountId,OldSum,NewSum) VALUES
+	(@accountId, @oldSum,@newSum)
+END
+
+GO
+
+CREATE TABLE NotificationEmails
+(
+	Id INT PRIMARY KEY IDENTITY NOT NULL,
+	Recipient INT,
+	[Subject] VARCHAR(500),
+	Body VARCHAR(500)
+);
 
 
 
