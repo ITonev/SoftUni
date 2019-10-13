@@ -238,11 +238,15 @@ CREATE TABLE NotificationEmails
 	Recipient INT,
 	[Subject] VARCHAR(500),
 	Body VARCHAR(500)
-);
+)
 
+GO
 
-
-
+CREATE TRIGGER tr_NewEmail ON Logs FOR UPDATE
+AS
+BEGIN
+	
+END
 
 
 
