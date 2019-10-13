@@ -242,21 +242,93 @@ CREATE TABLE NotificationEmails
 
 GO
 
-CREATE TRIGGER tr_NewEmail ON Logs FOR UPDATE
+CREATE TRIGGER tr_NewEmail ON Logs FOR INSERT
 AS
 BEGIN
+	DECLARE @Recipient INT = (SELECT i.AccountId FROM inserted AS i)
+	DECLARE @Subject VARCHAR(500) = 'Balance change for account: ' + CAST(@recipient AS VARCHAR(30))
+	DECLARE @Body VARCHAR(500) = 'On ' + CAST(GETDATE() AS NVARCHAR(30)) + ' your balance was changed from ' + CAST((SELECT i.OldSum FROM inserted AS i) AS VARCHAR(10)) + ' to ' + CAST((SELECT i.NewSum FROM inserted AS i) AS VARCHAR(10)) + '.'
 	
+	INSERT INTO NotificationEmails (Recipient,[Subject],Body) VALUES
+	(@Recipient,@Subject,@Body)
 END
 
+GO
 
+UPDATE Accounts SET Balance = 666 WHERE Id = 2
 
+GO
 
+CREATE PROC usp_DepositMoney (@AccountId INT, @MoneyAmount DECIMAL(18,4))
+AS
+BEGIN TRANSACTION
+	IF(@MoneyAmount <0)
+	BEGIN
+		ROLLBACK
+		RAISERROR('Money should be positive number', 16,1)
+		RETURN
+	END
 
+	UPDATE Accounts
+	   SET Balance +=@MoneyAmount
+	 WHERE Id = @AccountId
+COMMIT
 
+GO
 
+CREATE PROCEDURE usp_TransferMoney(@SenderId INT, @ReceiverId INT, @Amount DECIMAL(15, 4))
+AS
+BEGIN
+	DECLARE @targetSender INT = (SELECT Id FROM [dbo].[Accounts] AS a WHERE a.[Id] = @SenderId)
+	DECLARE @targetReciver INT = (SELECT Id FROM [dbo].[Accounts] AS a WHERE a.[Id] = @ReceiverId)
+	
+	IF(@targetReciver IS NULL OR @targetSender IS NULL)
+	BEGIN
+		ROLLBACK
+		RAISERROR('Invalid Id Parameter', 16, 1)
+		RETURN
+	END
+	
+	IF(@Amount < 0)
+	BEGIN
+		ROLLBACK
+		RAISERROR('Invalid amount of money', 16, 2)
+		RETURN
+	END
+	
+	EXEC dbo.usp_WithdrawMoney @targetSender, @Amount
+	EXEC dbo.usp_DepositMoney @targetReciver, @Amount
+END
 
+GO
 
+CREATE PROCEDURE usp_AssignProject(@emloyeeId INT, @projectID INT)
+AS
+BEGIN TRANSACTION
+DECLARE @projects INT = (SELECT COUNT([ep].[ProjectID])
+                           FROM [dbo].[Employees] AS e
+						   JOIN [dbo].[EmployeesProjects] AS [ep] ON [e].[EmployeeID] = [ep].[EmployeeID]
+						  WHERE [e].[EmployeeID] = @emloyeeId)
 
+IF(@projects >= 3)
+BEGIN
+	ROLLBACK
+	RAISERROR('The employee has too many projects!', 16, 1)
+	RETURN
+END
+
+INSERT INTO [dbo].[EmployeesProjects]
+(
+    [EmployeeID],
+    [ProjectID]
+)
+VALUES
+(
+    @emloyeeId,
+    @projectID
+)
+
+COMMIT
 
 
 
