@@ -66,16 +66,20 @@ WHERE f.Destination = 'Carlsbad'
 UPDATE Tickets SET Price *=1.13
 
 
+DELETE FROM Tickets 
+WHERE FlightId IN (SELECT Id FROM Flights WHERE Destination='Ayn Halagim')
+DELETE FROM Flights
+WHERE Destination='Ayn Halagim'
 
+SELECT * 
+FROM Planes
+WHERE [Name] LIKE '%tr%'
+ORDER BY Id, [Name], Seats, [Range] 
 
-
-
-
-
-
-
-
-
+SELECT FlightId, SUM(Price) AS Price
+FROM Tickets
+GROUP BY FlightId
+ORDER BY Price DESC, FlightId 
 
 
 
