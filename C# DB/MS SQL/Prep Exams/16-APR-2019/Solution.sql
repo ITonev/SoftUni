@@ -150,9 +150,17 @@ SELECT dbo.udf_CalculateTickets('Kolyshley','Rancabolang', 33)
 
 GO
 
+CREATE PROC usp_CancelFlights
+AS
+BEGIN
+SELECT * FROM Flights
+WHERE ArrivalTime>DepartureTime
+	UPDATE Flights
+	SET ArrivalTime = NULL, DepartureTime = NULL
+	WHERE ArrivalTime > DepartureTime
+END
 
-
-
+GO
 
 
 
