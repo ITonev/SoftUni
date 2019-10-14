@@ -116,12 +116,39 @@ LEFT JOIN Tickets AS T ON t.FlightId = f.Id
 GROUP BY p.[Name], p.Seats
 ORDER BY COUNT(t.Id) DESC, p.[Name], p.Seats 
 
+GO
 
+CREATE FUNCTION udf_CalculateTickets(@origin VARCHAR(30), @destination VARCHAR(30), @peopleCount INT) 
+RETURNS VARCHAR(30)
+AS 
+BEGIN
+	IF(@peopleCount<=0)
+	  BEGIN
+		RETURN 'Invalid people count!'
+	  END
 
+  DECLARE @flightChecker INT = (SELECT TOP(1) Id 
+							    FROM Flights 
+								WHERE Origin=@origin AND Destination=@destination)
+	
+	IF(@flightChecker IS NULL)
+	  BEGIN
+	    RETURN 'Invalid flight!'
+	  END
 
+	DECLARE @totalSum DECIMAL(18, 2) = (SELECT TOP(1) t.Price 
+								       FROM Tickets AS t
+									   JOIN Flights AS f ON t.FlightId=f.Id
+									   WHERE f.Origin=@origin AND f.Destination=@destination) * @peopleCount		
+	  
+	  RETURN 'Total price ' + CAST(@totalSum AS VARCHAR(30))
+END
 
+GO
 
+SELECT dbo.udf_CalculateTickets('Kolyshley','Rancabolang', 33)
 
+GO
 
 
 
