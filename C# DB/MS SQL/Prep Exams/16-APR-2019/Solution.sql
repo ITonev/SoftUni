@@ -81,19 +81,31 @@ FROM Tickets
 GROUP BY FlightId
 ORDER BY Price DESC, FlightId 
 
+SELECT CONCAT(p.FirstName, ' ', p.LastName) AS [Full Name],
+       f.Origin,
+	   f.Destination
+FROM Passengers AS p
+JOIN Tickets AS t ON p.Id=t.PassengerId
+JOIN Flights AS f ON t.FlightId=f.Id
+ORDER BY [Full Name], f.Origin, f.Destination 
 
+SELECT p.FirstName, p.LastName, p.Age
+FROM Passengers AS p
+LEFT JOIN Tickets AS t ON t.PassengerId=p.Id
+WHERE t.Id IS NULL
+ORDER BY p.Age DESC, p.FirstName, p.LastName 
 
-
-
-
-
-
-
-
-
-
-
-
+SELECT CONCAT(p.FirstName, ' ', p.LastName) AS [Full Name],
+	   pl.[Name] AS [Plane Name],
+	   CONCAT(f.Origin, ' - ', f.Destination) AS [Trip],
+	   lt.[Type] AS [Luggage Type]
+FROM Passengers AS p
+JOIN Tickets AS t ON p.Id=t.PassengerId
+JOIN Flights AS f ON f.Id=t.FlightId
+JOIN Planes AS pl ON pl.Id=f.PlaneId
+JOIN Luggages AS l ON p.Id=l.PassengerId
+JOIN LuggageTypes AS lt ON l.LuggageTypeId=lt.Id
+ORDER BY [Full Name], [Plane Name], f.Origin, f.Destination, lt.[Type]
 
 
 
