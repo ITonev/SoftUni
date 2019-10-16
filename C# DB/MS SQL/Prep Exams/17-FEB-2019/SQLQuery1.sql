@@ -96,11 +96,15 @@ UPDATE StudentsSubjects
 SET Grade = 6
 WHERE SubjectId IN (1,2) AND Grade>=5.50
 
+DELETE FROM StudentsTeachers
+WHERE TeacherId IN (
+				SELECT Id 
+				FROM Teachers 
+				WHERE Phone LIKE '%72%'
+				)
 
-
-
-
-
+DELETE FROM Teachers
+WHERE Phone LIKE '%72%'
 
 
 
