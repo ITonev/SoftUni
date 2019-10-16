@@ -106,31 +106,48 @@ WHERE TeacherId IN (
 DELETE FROM Teachers
 WHERE Phone LIKE '%72%'
 
+SELECT FirstName, LastName, Age 
+FROM Students
+WHERE Age >=12
+ORDER BY FirstName, LastName
 
+SELECT s.FirstName, s.LastName, COUNT(st.TeacherId) AS TeachersCount
+FROM Students AS s
+JOIN StudentsTeachers AS st ON st.StudentId=s.Id
+JOIN Teachers AS t ON st.TeacherId=t.Id
+GROUP BY s.FirstName, s.LastName
 
+SELECT CONCAT(s.FirstName, ' ', s.LastName) AS [Full Name] 
+FROM Students AS s
+LEFT OUTER JOIN StudentsExams AS se ON se.StudentId=s.Id
+LEFT OUTER JOIN Exams AS e ON se.ExamId=e.Id
+WHERE se.ExamId IS NULL
+ORDER BY [Full Name]
 
+SELECT TOP(10) s.FirstName, s.LastName, CAST(AVG(se.Grade) AS DECIMAL(15,2)) AS Grade 
+FROM Students AS s
+JOIN StudentsExams AS se ON se.StudentId=s.Id
+--JOIN Exams AS e ON se.ExamId=e.Id
+GROUP BY s.FirstName, s.LastName
+ORDER BY Grade DESC, s.FirstName, s.LastName
 
+SELECT 
+	 CASE
+		WHEN s.MiddleName IS NULL THEN CONCAT(s.FirstName, ' ', s.LastName)
+        ELSE CONCAT(s.FirstName, ' ', s.MiddleName, ' ', s.LastName) 
+		END	AS [Full Name]
+FROM Students AS s
+LEFT JOIN StudentsSubjects AS ss ON s.Id=ss.StudentId
+LEFT JOIN Subjects AS su ON su.Id=ss.SubjectId
+WHERE su.Id IS NULL
+ORDER BY [Full Name]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT sss.[Name], sss.AverageGrade FROM (SELECT su.[Name], AVG(ss.Grade) AS AverageGrade, su.Id  
+FROM Students AS s
+JOIN StudentsSubjects AS ss ON ss.StudentId=s.Id
+JOIN Subjects AS su ON su.Id=ss.SubjectId
+GROUP BY su.[Name], su.Id) AS sss
+ORDER BY sss.Id
 
 
 
