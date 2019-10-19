@@ -155,21 +155,30 @@ ORDER BY sss.Id
 GO
 
 CREATE FUNCTION udf_ExamGradesToUpdate(@studentId INT, @grade DECIMAL(15,2))
-RETURNS VARCHAR(30)
+RETURNS VARCHAR(MAX)
 AS
 BEGIN
 	DECLARE @Count INT = (SELECT COUNT(*) FROM Students AS s
 	JOIN StudentsExams AS se ON se.StudentId=s.Id
-	WHERE s.Id=12 AND se.Grade >= 5.50 AND se.Grade <= 6.00)
+	WHERE s.Id=@studentId AND se.Grade >= @grade AND se.Grade <= (@grade+0.50))
 	
-	DECLARE @StudentPresent INT = CHARINDEX((SELECT Id FROM Students WHERE Id = @studentId), @studentId)
-	IF(@StudentPresent = 0)
+	DECLARE @StudentIdExist INT = (SELECT Id FROM Students WHERE Id = @studentId)
+	DECLARE @StudentName VARCHAR(30) = (SELECT FirstName FROM Students WHERE Id = @studentId)
+	
+	IF(@StudentIdExist IS NULL)
 	   BEGIN
 	   RETURN 'The student with provided id does not exist in the school!'
 	   END
+
+	IF(@grade > 6.00)
+	BEGIN
+	   RETURN 'Grade cannot be above 6.00!'
+	   END
+	  
+  RETURN 'You have to update ' + CAST(@Count AS VARCHAR(30)) + ' grades for the student ' + @StudentName 
 END
 
-
+GO
 
 
 
