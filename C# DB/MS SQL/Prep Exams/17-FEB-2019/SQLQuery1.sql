@@ -142,13 +142,32 @@ LEFT JOIN Subjects AS su ON su.Id=ss.SubjectId
 WHERE su.Id IS NULL
 ORDER BY [Full Name]
 
-SELECT sss.[Name], sss.AverageGrade FROM (SELECT su.[Name], AVG(ss.Grade) AS AverageGrade, su.Id  
-FROM Students AS s
-JOIN StudentsSubjects AS ss ON ss.StudentId=s.Id
-JOIN Subjects AS su ON su.Id=ss.SubjectId
-GROUP BY su.[Name], su.Id) AS sss
+SELECT sss.[Name], 
+	   sss.AverageGrade 
+FROM (
+	SELECT su.[Name], AVG(ss.Grade) AS AverageGrade, su.Id  
+	FROM Students AS s
+	JOIN StudentsSubjects AS ss ON ss.StudentId=s.Id
+	JOIN Subjects AS su ON su.Id=ss.SubjectId
+	GROUP BY su.[Name], su.Id) AS sss
 ORDER BY sss.Id
 
+GO
+
+CREATE FUNCTION udf_ExamGradesToUpdate(@studentId INT, @grade DECIMAL(15,2))
+RETURNS VARCHAR(30)
+AS
+BEGIN
+	DECLARE @Count INT = (SELECT COUNT(*) FROM Students AS s
+	JOIN StudentsExams AS se ON se.StudentId=s.Id
+	WHERE s.Id=12 AND se.Grade >= 5.50 AND se.Grade <= 6.00)
+	
+	DECLARE @StudentPresent INT = CHARINDEX((SELECT Id FROM Students WHERE Id = @studentId), @studentId)
+	IF(@StudentPresent = 0)
+	   BEGIN
+	   RETURN 'The student with provided id does not exist in the school!'
+	   END
+END
 
 
 
