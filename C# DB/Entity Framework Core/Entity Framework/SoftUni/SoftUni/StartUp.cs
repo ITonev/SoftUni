@@ -14,7 +14,7 @@ namespace SoftUni
         {
             using (var db = new SoftUniContext())
             {
-                Console.WriteLine(GetEmployee147(db));
+                Console.WriteLine(GetLatestProjects(db));
             }
         }
 
@@ -174,7 +174,7 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
-        public static string GetAddressesByTown(SoftUniContext context) 
+        public static string GetAddressesByTown(SoftUniContext context)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -201,7 +201,7 @@ namespace SoftUni
         }
 
 
-        public static string GetEmployee147(SoftUniContext context) 
+        public static string GetEmployee147(SoftUniContext context)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -217,7 +217,7 @@ namespace SoftUni
                                             {
                                                 p.Project.Name
                                             })
-                                            .OrderBy(p=>p.Name)
+                                            .OrderBy(p => p.Name)
                                             .ToList()
                             })
                             .ToList();
@@ -235,6 +235,73 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
+        public static string GetDepartmentsWithMoreThan5Employees(SoftUniContext context)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var departments = context
+                                .Departments
+                                .Where(d => d.Employees.Count > 5)
+                                .Select(d => new
+                                {
+                                    d.Name,
+                                    managerName = d.Manager.FirstName + " " + d.Manager.LastName,
+                                    count = d.Employees.Count,
+                                    employees = d.Employees
+                                                .Select(e => new
+                                                {
+                                                    e.FirstName,
+                                                    e.LastName,
+                                                    e.JobTitle
+                                                })
+                                                .OrderBy(e => e.FirstName)
+                                                .ThenBy(e => e.LastName)
+                                                .ToList()
+                                })
+                                .OrderBy(d => d.count)
+                                .ThenBy(d => d.Name)
+                                .ToList();
+
+            foreach (var d in departments)
+            {
+                sb.AppendLine($"{d.Name} - {d.managerName}");
+
+                foreach (var e in d.employees)
+                {
+                    sb.AppendLine($"{e.FirstName} {e.LastName} - {e.JobTitle}");
+                }
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        public static string GetLatestProjects(SoftUniContext context) 
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var projects = context
+                            .Projects
+                            .TakeLast(10)
+                            .Select(p => new
+                            {
+                                p.Name,
+                                p.Description,
+                                p.StartDate
+                            })
+                            .OrderBy(p => p.Name)
+                            .ToList();
+
+            foreach (var p in projects)
+            {
+                var date = string.Format("{0:M/d/yyyy h:mm:ss tt}", p.StartDate);
+
+                sb.AppendLine(p.Name)
+                    .AppendLine(p.Description)
+                    .AppendLine(date);
+            }
+
+            return sb.ToString().TrimEnd();
+        }
 
     }
 }
