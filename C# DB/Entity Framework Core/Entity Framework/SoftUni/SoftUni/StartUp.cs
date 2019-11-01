@@ -281,7 +281,8 @@ namespace SoftUni
 
             var projects = context
                             .Projects
-                            .TakeLast(10)
+                            .OrderByDescending(p=>p.StartDate)
+                            .Take(10)
                             .Select(p => new
                             {
                                 p.Name,
