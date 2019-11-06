@@ -12,7 +12,7 @@ namespace P03_SalesDatabase.Data.Models
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
 
         public int Price { get; set; }
 

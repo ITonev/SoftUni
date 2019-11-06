@@ -28,11 +28,10 @@ namespace P03_SalesDatabase.Migrations
                     b.Property<string>("CreditCardNumber");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(80)
-                        .IsUnicode(false);
+                        .HasMaxLength(80);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(100)
+                        .HasMaxLength(80)
                         .IsUnicode(true);
 
                     b.HasKey("CustomerId");
@@ -46,7 +45,9 @@ namespace P03_SalesDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .IsUnicode(true);
 
                     b.Property<string>("Name")
                         .HasMaxLength(50)
@@ -54,7 +55,7 @@ namespace P03_SalesDatabase.Migrations
 
                     b.Property<int>("Price");
 
-                    b.Property<int>("Quantity");
+                    b.Property<double>("Quantity");
 
                     b.HasKey("ProductId");
 
@@ -95,8 +96,7 @@ namespace P03_SalesDatabase.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .IsUnicode(true);
+                        .HasMaxLength(50);
 
                     b.HasKey("StoreId");
 
