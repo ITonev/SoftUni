@@ -53,7 +53,7 @@ namespace P03_SalesDatabase.Migrations
                         .HasMaxLength(50)
                         .IsUnicode(true);
 
-                    b.Property<int>("Price");
+                    b.Property<decimal>("Price");
 
                     b.Property<double>("Quantity");
 

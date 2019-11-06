@@ -10,8 +10,8 @@ using P03_SalesDatabase.Data;
 namespace P03_SalesDatabase.Migrations
 {
     [DbContext(typeof(SalesContext))]
-    [Migration("20191106203405_SalesDateDefaul")]
-    partial class SalesDateDefaul
+    [Migration("20191106204008_SalesAddDateDefault")]
+    partial class SalesAddDateDefault
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,7 @@ namespace P03_SalesDatabase.Migrations
                         .HasMaxLength(50)
                         .IsUnicode(true);
 
-                    b.Property<int>("Price");
+                    b.Property<decimal>("Price");
 
                     b.Property<double>("Quantity");
 
