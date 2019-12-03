@@ -16,7 +16,7 @@
 
             Mapper.Initialize(config => config.AddProfile<CinemaProfile>());
 
-            //ResetDatabase(context, shouldDropDatabase: true);
+            ResetDatabase(context, shouldDropDatabase: true);
 
             var projectDir = GetProjectDirectory();
 
@@ -32,10 +32,10 @@
 
         private static void ImportEntities(CinemaContext context, string baseDir, string exportDir)
         {
-            //var movies =
-            //    DataProcessor.Deserializer.ImportMovies(context,
-            //        File.ReadAllText(baseDir + "movies.json"));
-            //PrintAndExportEntityToFile(movies, exportDir + "Actual Result - ImportMovies.txt");
+            var movies =
+                DataProcessor.Deserializer.ImportMovies(context,
+                    File.ReadAllText(baseDir + "movies.json"));
+            PrintAndExportEntityToFile(movies, exportDir + "Actual Result - ImportMovies.txt");
 
             var hallSeats =
                 DataProcessor.Deserializer.ImportHallSeats(context,

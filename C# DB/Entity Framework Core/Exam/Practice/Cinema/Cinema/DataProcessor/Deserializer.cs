@@ -3,8 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Xml.Serialization;
     using Cinema.Data.Models;
     using Cinema.Data.Models.Enums;
     using Cinema.DataProcessor.ImportDto;
@@ -101,7 +104,7 @@
                     {
                         projectionType = "Normal";
                     }
-                    
+
                     sb.AppendLine(string.Format(SuccessfulImportHallSeat, hall.Name, projectionType, hall.SeatsCount));
 
                     var currentHall = new Hall
@@ -134,12 +137,102 @@
 
         public static string ImportProjections(CinemaContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<ImportProjectionsDTO>), new XmlRootAttribute("Projections"));
+
+            var ProjectionsDTO = (List<ImportProjectionsDTO>)xmlSerializer.Deserialize(new StringReader(xmlString));
+
+            var projections = new List<Projection>();
+
+            var sb = new StringBuilder();
+
+            foreach (var proj in ProjectionsDTO)
+            {
+                var movie = context.Movies.FirstOrDefault(m => m.Id == proj.MovieId);
+                var hall = context.Halls.FirstOrDefault(h => h.Id == proj.HallId);
+
+                if (movie != null && hall != null)
+                {
+
+                    var projection = new Projection
+                    {
+                        MovieId = proj.MovieId,
+                        HallId = proj.HallId,
+                        DateTime = DateTime.Parse(proj.DateTime)
+                    };
+
+                    sb.AppendLine(string.Format(SuccessfulImportProjection, movie.Title, projection.DateTime.ToString(@"MM/dd/yyyy")));
+
+                    projection.Movie = movie;
+                    projection.Hall = hall;
+
+                    projections.Add(projection);
+                }
+
+                else
+                {
+                    sb.AppendLine(ErrorMessage);
+                }
+            }
+
+            context.Projections.AddRange(projections);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string ImportCustomerTickets(CinemaContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<CustomerImportDTO>), new XmlRootAttribute("Customers"));
+            var customersDTO = (List<CustomerImportDTO>)xmlSerializer.Deserialize(new StringReader(xmlString));
+
+            var customers = new List<Customer>();
+
+            var sb = new StringBuilder();
+            
+            foreach (var cust in customersDTO)
+            {
+                var isFirstNameValid = isValid(cust.FirstName);
+                var isLastNameValid = isValid(cust.LastName);
+                var isAgeValid = cust.Age >= 12 && cust.Age <= 110;
+                var isBalanceValid = cust.Balance >= 0.01m;
+
+                if (isFirstNameValid
+                    && isLastNameValid
+                    && isAgeValid
+                    && isBalanceValid)
+                {
+                    var customer = new Customer
+                    {
+                        FirstName = cust.FirstName,
+                        LastName = cust.LastName,
+                        Age = cust.Age,
+                        Balance = cust.Balance,
+                        Tickets = new List<Ticket>()
+                    };
+
+                    foreach (var tic in cust.Tickets)
+                    {
+                        var ticket = new Ticket
+                        {
+                            Customer = customer,
+                            Price = tic.Price,
+                            ProjectionId = tic.ProjectionId
+                        };
+
+                        customer.Tickets.Add(ticket);
+                        ticketscounter++;
+                    }
+
+                    customers.Add(customer);
+
+                    sb.AppendLine(string.Format(SuccessfulImportCustomerTicket, customer.FirstName, customer.LastName, customer.Tickets.Count));
+                }
+            }
+
+            context.Customers.AddRange(customers);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
 
         public static bool isValid(string input)
