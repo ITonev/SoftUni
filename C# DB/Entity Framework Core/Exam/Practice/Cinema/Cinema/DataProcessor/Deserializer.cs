@@ -220,7 +220,6 @@
                         };
 
                         customer.Tickets.Add(ticket);
-                        ticketscounter++;
                     }
 
                     customers.Add(customer);
