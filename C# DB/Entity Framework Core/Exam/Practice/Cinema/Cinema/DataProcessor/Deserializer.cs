@@ -36,9 +36,15 @@
 
             foreach (var movie in jsonMovies)
             {
+            //    if (IsValid(movie))
+            //    {
+
+            //    }
+
+
                 var validGenre = Enum.IsDefined(typeof(Genre), movie.Genre);
-                var validTitle = isValid(movie.Title);
-                var validDirector = isValid(movie.Director);
+                var validTitle = Validation(movie.Title);
+                var validDirector = Validation(movie.Director);
                 var validDuration = movie.Dudation != null;
                 var validRating = movie.Rating >= 1 && movie.Rating <= 10;
                 var movieExists = context.Movies.Any(x => x.Id == movie.Id);
@@ -69,6 +75,16 @@
             return sb.ToString().TrimEnd();
         }
 
+        private static bool IsValid(object obj)
+        {
+            var validator = new ValidationContext(obj);
+            var validationRes = new List<ValidationResult>();
+
+            var res = Validator.TryValidateObject(obj, validator, validationRes, true);
+
+            return res;
+        }
+
         public static string ImportHallSeats(CinemaContext context, string jsonString)
         {
             var jsonHalls = JsonConvert.DeserializeObject<List<HallImportDTO>>(jsonString);
@@ -79,7 +95,7 @@
 
             foreach (var hall in jsonHalls)
             {
-                var isNameValid = isValid(hall.Name);
+                var isNameValid = Validation(hall.Name);
 
                 var projectionType = string.Empty;
 
@@ -160,7 +176,7 @@
                         DateTime = DateTime.Parse(proj.DateTime)
                     };
 
-                    sb.AppendLine(string.Format(SuccessfulImportProjection, movie.Title, projection.DateTime.ToString(@"MM/dd/yyyy")));
+                    sb.AppendLine(string.Format(SuccessfulImportProjection, movie.Title, projection.DateTime.ToString(@"MM/dd/yyyy"), CultureInfo.InvariantCulture));
 
                     projection.Movie = movie;
                     projection.Hall = hall;
@@ -183,16 +199,16 @@
         public static string ImportCustomerTickets(CinemaContext context, string xmlString)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<CustomerImportDTO>), new XmlRootAttribute("Customers"));
-            var customersDTO = (List<CustomerImportDTO>)xmlSerializer.Deserialize(new StringReader(xmlString));
+            var customersDTO = (List<   >)xmlSerializer.Deserialize(new StringReader(xmlString));
 
             var customers = new List<Customer>();
 
             var sb = new StringBuilder();
-            
+
             foreach (var cust in customersDTO)
             {
-                var isFirstNameValid = isValid(cust.FirstName);
-                var isLastNameValid = isValid(cust.LastName);
+                var isFirstNameValid = Validation(cust.FirstName);
+                var isLastNameValid = Validation(cust.LastName);
                 var isAgeValid = cust.Age >= 12 && cust.Age <= 110;
                 var isBalanceValid = cust.Balance >= 0.01m;
 
@@ -234,7 +250,9 @@
             return sb.ToString().TrimEnd();
         }
 
-        public static bool isValid(string input)
+
+
+        public static bool Validation(string input)
         {
             var inputLenght = input.Length;
 

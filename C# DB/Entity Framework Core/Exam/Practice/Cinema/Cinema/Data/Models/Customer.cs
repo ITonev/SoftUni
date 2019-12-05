@@ -19,6 +19,7 @@ namespace Cinema.Data.Models
         public int Age { get; set; }
 
         [Range(0.01, double.MaxValue), Required]
+        [Range(typeof(decimal), minimum:"0.01", maximum: "10000000000000000000"))]
         public decimal Balance { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
