@@ -199,7 +199,7 @@
         public static string ImportCustomerTickets(CinemaContext context, string xmlString)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<CustomerImportDTO>), new XmlRootAttribute("Customers"));
-            var customersDTO = (List<   >)xmlSerializer.Deserialize(new StringReader(xmlString));
+            var customersDTO = (List<CustomerImportDTO>)xmlSerializer.Deserialize(new StringReader(xmlString));
 
             var customers = new List<Customer>();
 

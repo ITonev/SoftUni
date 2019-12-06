@@ -57,9 +57,11 @@
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     SpentMoney = x.Tickets.Sum(p => p.Price).ToString("F2"),
-                    SpentTime = TimeSpan.FromSeconds(
-                            x.Tickets.Sum(s => s.Projection.Movie.Dudation.TotalSeconds))
-                        .ToString(@"hh\:mm\:ss")
+                    //SpentTime = TimeSpan.FromSeconds(
+                    //        x.Tickets.Sum(s => s.Projection.Movie.Dudation.TotalSeconds))
+                    //    .ToString(@"hh\:mm\:ss")
+                    SpentTime = new DateTime(x.Tickets.Sum(p=>p.Projection.Movie.Dudation.Ticks)).ToString(@"hh\:mm\:ss")
+                
                 })
                 .ToArray();
 
